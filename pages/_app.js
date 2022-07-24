@@ -9,6 +9,12 @@ import { CookiesProvider } from 'react-cookie'
 function MyApp({ Component, pageProps }) { // pageProps est un objet qui contient les props de l'application
   const router = useRouter()
   useEffect (() => {
+    if (typeof window !== 'undefined') {
+      const loader = document.getElementById('globalLoader');
+      if (loader)
+          loader.style.display = 'none';
+    }
+
     const handleRouteChange = (url) => {
       gtag.pageview (url)
     }

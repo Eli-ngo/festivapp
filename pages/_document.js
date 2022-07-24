@@ -3,6 +3,7 @@ import { ServerStyleSheet } from 'styled-components';
 
 import { GA_TRACKING_ID } from '../lib/gtag';
 import { GTM_ID } from '../lib/gtm';
+import loader from '../src/loader';
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -95,6 +96,10 @@ export default class MyDocument extends Document {
                 `,
               }}
             />
+
+            <style>
+                { loader }
+            </style>
             
         </Head>
 
@@ -120,12 +125,19 @@ export default class MyDocument extends Document {
             `,
         }}
         /> 
+
+        <div id={'globalLoader'}>
+            <div className="loader">
+            <div/>
+            <div/>
+            </div>
+        </div>
         
-          <Main />
-          <NextScript />
+        <Main />
+        <NextScript />
 
         </body>
-      </Html>
+    </Html>
     );
-  }
+}
 }
