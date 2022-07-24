@@ -21,6 +21,7 @@ const Navbar = () => {
                 <h1>Festiv&apos;App</h1>
             </div>
             <div className="auth">
+                <Link href="/auth/signin"><a>Se connecter</a></Link>
                 <Link href="/auth/signup"><a>Créer un compte</a></Link>
             </div>
         </NavStyle>

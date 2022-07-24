@@ -4,6 +4,7 @@ import { GTM_ID } from '../lib/gtm'
 import * as gtag from '../lib/gtag'
 import { useRouter } from 'next/dist/client/router'
 import { useEffect } from 'react'
+import { CookiesProvider } from 'react-cookie'
 
 function MyApp({ Component, pageProps }) { // pageProps est un objet qui contient les props de l'application
   const router = useRouter()
@@ -31,10 +32,12 @@ function MyApp({ Component, pageProps }) { // pageProps est un objet qui contien
       `,
       }}
       />
-      <Layout>
-        {/* on passe la fonctionnalité de rendu à la fonctionnalité de rendu de l'application */}
-        <Component {...pageProps} />
-      </Layout>
+      <CookiesProvider>
+        <Layout>
+          {/* on passe la fonctionnalité de rendu à la fonctionnalité de rendu de l'application */}
+          <Component {...pageProps} />
+        </Layout>
+      </CookiesProvider>
     </>
   )
 }
