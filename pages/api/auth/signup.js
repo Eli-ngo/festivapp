@@ -35,8 +35,7 @@ export default async function signup(req, res) {
                 password: await hash(password, 12),
             }
         })
-
-        await prisma.$disconnect()
+        
         // on renvoie un message de succès
         res.status(201).json({ message: 'Utilisateur créé' })
     } else {

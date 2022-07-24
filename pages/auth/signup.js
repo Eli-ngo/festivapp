@@ -15,7 +15,7 @@ const Signup = () => {
         password: "",
     })
 
-    const handleCreateUser = async (e) => {
+    const handleSignUp = async (e) => {
         e.preventDefault() //on empêche le rechargement de la page
         if (!inputedUser.username || !inputedUser.email || !inputedUser.email.includes('@') || !inputedUser.password || !inputedUser.lastname || !inputedUser.firstname) {
             toast.error('Données invalides')
@@ -34,7 +34,7 @@ const Signup = () => {
                 toast.error('Erreur lors de la création de l\'utilisateur')
             } else {
                 toast.success('Utilisateur créé')
-                router.push('/')
+                router.push('/auth/signin')
             }
         }
     }
@@ -43,7 +43,7 @@ const Signup = () => {
         <>
         <Toaster />
         <h1>Inscription</h1>
-        <form onSubmit={handleCreateUser}>
+        <form onSubmit={handleSignUp}>
             <input type="text" value={inputedUser.username || ""} placeholder='username' onChange={(e) => setInputedUser({ ...inputedUser, username:e.target.value })}/>
             <input type="text" value={inputedUser.lastname || ""} placeholder='lastname' onChange={(e) => setInputedUser({ ...inputedUser, lastname:e.target.value })}/>
             <input type="text" value={inputedUser.firstname || ""} placeholder='firstname' onChange={(e) => setInputedUser({ ...inputedUser, firstname:e.target.value })}/>
