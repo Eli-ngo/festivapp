@@ -26,12 +26,21 @@ const Navbar = () => {
         e.preventDefault()
         removeCookie("user")
         router.push("/")
-        toast.success('Vous êtes déconnecté')
+        toast('Vous êtes déconnecté, à bientôt !',
+        {
+            icon: '👏',
+            style: {
+            borderRadius: '10px',
+            background: '#333',
+            color: '#fff',
+            },
+        }
+        );
     }
 
     return ( 
         <NavStyle>
-            <Toaster />
+            <Toaster position="bottom-center" reverseOrder={false}/>
             <div className="logo">
                 <h1>Festiv&apos;App</h1>
             </div>

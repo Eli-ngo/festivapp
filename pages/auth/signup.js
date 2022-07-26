@@ -30,18 +30,36 @@ const Signup = () => {
                 ),
             });
             const data = await res.json(); //on récupère les données de la BDD
-            if (data.error) {
-                toast.error('Erreur lors de la création de l\'utilisateur')
-            } else {
-                toast.success('Utilisateur créé')
+            if (res.ok) {
+                toast('Utilisateur crée',
+                {
+                    icon: '✅',
+                    style: {
+                    borderRadius: '10px',
+                    background: '#333',
+                    color: '#fff',
+                    },
+                }
+                );
                 router.push('/auth/signin')
+            } else {
+                toast('Erreur',
+                {
+                    icon: '❌',
+                    style: {
+                    borderRadius: '10px',
+                    background: '#333',
+                    color: '#fff',
+                    },
+                }
+                );
             }
         }
     }
 
     return(
         <>
-        <Toaster />
+        <Toaster position="bottom-center" reverseOrder={false}/>
         <h1>Inscription</h1>
         <form onSubmit={handleSignUp}>
             <input type="text" value={inputedUser.username || ""} placeholder='username' onChange={(e) => setInputedUser({ ...inputedUser, username:e.target.value })}/>

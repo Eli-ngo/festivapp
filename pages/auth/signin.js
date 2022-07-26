@@ -39,10 +39,28 @@ const Signin = () => {
                     maxAge: 3600, // Expire après 1 heure
                     sameSite: true,
                 })
-                toast.success("Connexion réussie")
+                toast('Connexion réussie',
+                {
+                    icon: '✅',
+                    style: {
+                    borderRadius: '10px',
+                    background: '#333',
+                    color: '#fff',
+                    },
+                }
+                );
                 router.push('/')
             }else{
-                toast.error("Connexion échouée")
+                toast('Connexion échouée',
+                {
+                    icon: '❌',
+                    style: {
+                    borderRadius: '10px',
+                    background: '#333',
+                    color: '#fff',
+                    },
+                }
+                );
             }
         }
 
@@ -50,7 +68,7 @@ const Signin = () => {
 
     return(
         <>
-        <Toaster />
+        <Toaster position="bottom-center" reverseOrder={false}/>
         <h1>Se connecter</h1>
         <form method='POST' onSubmit={handleSignIn}>
                 <label>Pseudo</label>

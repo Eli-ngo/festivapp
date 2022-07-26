@@ -14,14 +14,26 @@ export default async function signup(req, res) {
         }
 
         // on vérifie que l'utilisateur n'existe pas déjà
-        const checkExisting = await prisma.user.findUnique({
+        const checkEmail = await prisma.user.findUnique({
             where: {
                 email
             }
         })
+        // on vérifie que l'utilisateur n'existe pas déjà
+        const checkUsername = await prisma.user.findUnique({
+            where: {
+                username
+            }
+        })
 
         // si l'utilisateur existe déjà, on renvoie une erreur
-        if(checkExisting){
+        if(checkEmail){
+            res.status(500).json({ message: 'Utilisateur déjà existant' })
+            return
+        }
+
+        // si l'utilisateur existe déjà, on renvoie une erreur
+        if(checkUsername){
             res.status(500).json({ message: 'Utilisateur déjà existant' })
             return
         }
