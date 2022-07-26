@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client'; // by importing the client, we can use the client to make queries to the database
+import { PrismaClient } from '@prisma/client'; // on utilise le client pour faire des requêtes à la base de données
 import { hash } from 'bcryptjs'; // hash le mot de passe en BDD
 
 export default async function signup(req, res) {

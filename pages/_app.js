@@ -9,6 +9,7 @@ import { CookiesProvider } from 'react-cookie'
 function MyApp({ Component, pageProps }) { // pageProps est un objet qui contient les props de l'application
   const router = useRouter()
   useEffect (() => {
+    //loader
     if (typeof window !== 'undefined') {
       const loader = document.getElementById('globalLoader');
       if (loader)
@@ -38,7 +39,7 @@ function MyApp({ Component, pageProps }) { // pageProps est un objet qui contien
       `,
       }}
       />
-      <CookiesProvider>
+      <CookiesProvider> {/* pour s'assurer que toutes les routes de l'appli aient accès au cookie *, on entoure notre composant app dans un cookie provider */}
         <Layout>
           {/* on passe la fonctionnalité de rendu à la fonctionnalité de rendu de l'application */}
           <Component {...pageProps} />

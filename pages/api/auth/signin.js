@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client'; // by importing the client, we can use the client to make queries to the database
+import { PrismaClient } from '@prisma/client'; // on utilise le client pour faire des requêtes à la base de données
 import { compare } from 'bcryptjs'; // compare le mot de passe en BDD
 
 const prisma = new PrismaClient(); // on crée un nouveau client prisma
@@ -27,9 +27,9 @@ export default async function signin(req, res) {
         }else{
             const checkPassword = await compare(password, checkUser.password);
             
-            if(!checkPassword){
+            if(!checkPassword){ // si le mot de passe n'est pas bon, on renvoie une erreur
                 res.status(422).json({message: 'Mot de passe incorrect'});
-            }else{
+            }else{ // si le mot de passe est bon, on renvoie un token
                 res.status(200).json({
                     username: checkUser.username,
                     email: checkUser.email,
