@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import toast, { Toaster } from 'react-hot-toast'
 
 export default function Home() {
 
@@ -13,8 +12,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>Festiv&apos;App | Accueil</h1>
-      <button onClick={notify}> Make me a toast</button>
-      <Toaster />
     </div>
     </>
   )

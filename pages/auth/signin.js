@@ -35,7 +35,7 @@ const Signin = () => {
 
             if(res.ok){
                 setCookie("user", JSON.stringify(data), {
-                    path: "/",
+                    path: "/", //nous passons 3 arguments à la méthode setCookie(). Le premier est le nom du cookie, le second est la valeur du cookie, le troisième permet d'accéder au cookie sur toutes les pages.
                     maxAge: 3600, // Expire après 1 heure
                     sameSite: true,
                 })
