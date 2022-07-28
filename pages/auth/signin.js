@@ -17,7 +17,16 @@ const Signin = () => {
         e.preventDefault()
 
         if(!inputedUser.username || !inputedUser.password){
-            toast.error("Données invalides")
+            toast('Connexion échouée',
+                {
+                    icon: '❌',
+                    style: {
+                    borderRadius: '10px',
+                    background: '#333',
+                    color: '#fff',
+                    },
+                }
+                );
             return
         }else{
             const res = await fetch('/api/auth/signin', {
@@ -49,7 +58,7 @@ const Signin = () => {
                     },
                 }
                 );
-                router.push('/')
+                router.push('/feed')
             }else{
                 toast('Connexion échouée',
                 {

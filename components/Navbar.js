@@ -44,6 +44,9 @@ const Navbar = () => {
             <div className="logo">
                 <h1>Festiv&apos;App</h1>
             </div>
+            <div className="profile">
+                <Link href="/user/profile"><a>Mon profil</a></Link>
+            </div>
             <div className="logout">
                 <button onClick={(e) => signout(e)}>Se déconnecter</button>
             </div>
