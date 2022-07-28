@@ -18,7 +18,16 @@ const Signup = () => {
     const handleSignUp = async (e) => {
         e.preventDefault() //on empêche le rechargement de la page
         if (!inputedUser.username || !inputedUser.email || !inputedUser.email.includes('@') || !inputedUser.password || !inputedUser.lastname || !inputedUser.firstname) {
-            toast.error('Données invalides')
+            toast('Connexion échouée',
+                {
+                    icon: '❌',
+                    style: {
+                    borderRadius: '10px',
+                    background: '#333',
+                    color: '#fff',
+                    },
+                }
+                );
         }else{
             const res = await fetch('/api/auth/signup', {
                 method: 'POST',
