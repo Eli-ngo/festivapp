@@ -50,34 +50,45 @@ const Navbar = () => {
 
     return ( 
         <NavStyle>
-            <div className="logo">
+            {cookies.user ? (
+                <>
+                <div className="logo">
                 {/* <h1>Festiv&apos;App</h1> */}
                 <Link href="/"><a>Festiv&apos;App</a></Link>
-            </div>
-            <div className="profile">
-                <Link href="/profile"><a>Mon profil</a></Link>
-                <Link href="/post/addpost"><a>Ajouter un post</a></Link>
-            </div>
-            <div className="logout">
-                <button onClick={(e) => signout(e)}>Se déconnecter</button>
-            </div>
+                </div>
+                <div className="logout">
+                    <button onClick={(e) => signout(e)}>Se déconnecter</button>
+                </div>
+                <div className="profile">
+                    <Link href="/profile"><a>Mon profil</a></Link>
+                    <Link href="/post/addpost"><a>Ajouter un post</a></Link>
+                </div>
+                <div className="profilepic">
+                    {cookies.user?.avatar ? (
+                        <Image
+                        src={`${cookies.user?.avatar}`}
+                        alt="Profile"
+                        width={60}
+                        height={60}
+                        />
+                    ) : (
+                        'Aucune photo'
+                    )}
+                </div>
+            </>
+            ) : (
+                <>
+                <div className="logo">
+                {/* <h1>Festiv&apos;App</h1> */}
+                <Link href="/"><a>Festiv&apos;App</a></Link>
+                </div>
             <div className="auth">
                 <Link href="/auth/signin"><a>Se connecter</a></Link>
                 <Link href="/auth/signup"><a>Créer un compte</a></Link>
             </div>
-            <div className="profilepic">
-            {user?.avatar ? (
-                <Image
-                src={`/${user?.avatar}`}
-                alt="Profile"
-                width={90}
-                height={90}
-                />
-            ) : (
-                'Aucune photo'
-            )}
-            </div>
-        </NavStyle>
+                </>
+            )
+            }</NavStyle>
     );
 }
 
