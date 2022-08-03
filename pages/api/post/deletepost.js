@@ -7,7 +7,7 @@ export default async function handler(req, res) {
         const { id } = req.body
         const post = await prisma.post.delete({
             where: {
-                id,
+                id
             },
         })
         res.status(200).json(post)
