@@ -3,6 +3,8 @@ import Link from 'next/link'
 import toast, { Toaster } from 'react-hot-toast'
 import { useCookies } from 'react-cookie';
 import { useRouter } from 'next/router'
+import Image from 'next/image';
+import { useState, useEffect } from 'react';
 
 export const NavStyle = styled.nav`
 
@@ -18,9 +20,10 @@ align-items: center;
 
 const Navbar = () => {
 
-    const [cookies, setCookie, removeCookie] = useCookies(["user"])
-
     const router = useRouter()
+
+    const [cookies, setCookie, removeCookie] = useCookies(["user"])
+    const [user, setUser] = useState()
 
     const signout = (e) => {
         e.preventDefault()
@@ -38,10 +41,18 @@ const Navbar = () => {
         );
     }
 
+    useEffect(() => {
+        if(cookies.user){
+            setUser(cookies.user)
+        }
+
+        }, [cookies.user])
+
     return ( 
         <NavStyle>
             <div className="logo">
-                <h1>Festiv&apos;App</h1>
+                {/* <h1>Festiv&apos;App</h1> */}
+                <Link href="/"><a>Festiv&apos;App</a></Link>
             </div>
             <div className="profile">
                 <Link href="/profile"><a>Mon profil</a></Link>
@@ -53,6 +64,18 @@ const Navbar = () => {
             <div className="auth">
                 <Link href="/auth/signin"><a>Se connecter</a></Link>
                 <Link href="/auth/signup"><a>Créer un compte</a></Link>
+            </div>
+            <div className="profilepic">
+            {user?.avatar ? (
+                <Image
+                src={`/${user?.avatar}`}
+                alt="Profile"
+                width={90}
+                height={90}
+                />
+            ) : (
+                'Aucune photo'
+            )}
             </div>
         </NavStyle>
     );

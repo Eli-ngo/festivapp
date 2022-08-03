@@ -2,8 +2,12 @@ import Head from 'next/head'
 import { useCookies } from 'react-cookie';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function Profile() {
+
+  const router = useRouter();
 
   const [ cookie, setCookie ] = useCookies(['user']);
   const [user, setUser] = useState()
@@ -13,7 +17,22 @@ export default function Profile() {
     if(cookie.user){
       setUser(cookie.user)
     }
+
+    if(!cookie.user){
+      toast('Veuillez vous connecter pour accéder à cette page',
+                {
+                    icon: '❌',
+                    style: {
+                    borderRadius: '10px',
+                    background: '#333',
+                    color: '#fff',
+                    },
+                }
+                );
+      router.push('/auth/signin')
+    }
   }, [cookie.user])
+
   const handleChange = (e) => {
     setImage(e.target.files[0])
     console.log(e.target.files[0])
@@ -31,7 +50,7 @@ export default function Profile() {
     if(res.ok){
       setCookie("user", JSON.stringify(json), {
         path: '/',
-        maxAge: 3600, // Expires after 1hr
+        maxAge: 1814400, // Expire après 3 semaines
         sameSite: true,
     })
     }
