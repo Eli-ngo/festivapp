@@ -48,7 +48,7 @@ const Signin = () => {
                     maxAge: 3600, // Expire après 1 heure
                     sameSite: true,
                 })
-                toast('Connexion réussie',
+                toast('Bonjour ' + data.firstname,
                 {
                     icon: '✅',
                     style: {
@@ -77,7 +77,6 @@ const Signin = () => {
 
     return(
         <>
-        <Toaster position="bottom-center" reverseOrder={false}/>
         <h1>Se connecter</h1>
         <form method='POST' onSubmit={handleSignIn}>
                 <label>Pseudo</label>

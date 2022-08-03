@@ -13,6 +13,7 @@ const Signup = () => {
         firstname: "",
         email: "",
         password: "",
+        avatar: "",
     })
 
     const handleSignUp = async (e) => {
@@ -68,7 +69,6 @@ const Signup = () => {
 
     return(
         <>
-        <Toaster position="bottom-center" reverseOrder={false}/>
         <h1>Inscription</h1>
         <form onSubmit={handleSignUp}>
             <input type="text" value={inputedUser.username || ""} placeholder='username' onChange={(e) => setInputedUser({ ...inputedUser, username:e.target.value })}/>

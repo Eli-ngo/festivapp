@@ -36,6 +36,7 @@ export default async function signin(req, res) {
                     firstname: checkUser.firstname,
                     lastname: checkUser.lastname,
                     id: checkUser.id,
+                    avatar: checkUser.avatar,
                 })
             }
         }

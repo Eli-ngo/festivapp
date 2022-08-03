@@ -1,9 +1,23 @@
 import Head from 'next/head'
 import { useCookies } from 'react-cookie';
+import { useState, useEffect } from 'react';
 
 export default function Feed() {
 
   const [ cookie ] = useCookies(['user']);
+
+  const [datas, setDatas] = useState([])
+
+  const fetchData = async () => {
+    const response = await fetch('/api/post/getpost')
+    const json = await response.json()
+    setDatas(json)
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
   return (
     <>
     <div>
@@ -13,6 +27,17 @@ export default function Feed() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>Bonjour {cookie?.user?.firstname}</h1>
+
+      <div>
+        {datas.map((data, id) => {
+          return (
+            <div key={id}>
+              <p>{data.image}</p>
+              <p>{data.description}</p>
+            </div>
+          )
+        })}
+      </div>
       
     </div>
     </>

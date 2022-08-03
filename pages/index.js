@@ -1,6 +1,10 @@
 import Head from 'next/head'
 
 export default function Home() {
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log(e.target)
+  }
   return (
     <>
     <div>
@@ -11,6 +15,11 @@ export default function Home() {
       </Head>
       <h1>Festiv'app | Accueil</h1>
       
+
+      <form  onSubmit={handleSubmit}>
+        <input type="file" accept=".jpg, .png, .gif, .jpeg" name="file"/>
+        <button>Valider</button>
+      </form>
     </div>
     </>
   )
