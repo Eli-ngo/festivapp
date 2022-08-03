@@ -37,8 +37,8 @@ model Post {
   updatedAt DateTime @updatedAt
   image String
   description String
-  user User @relation(fields: [user_id], references: [username])
-  user_id String
+  user User? @relation(fields: [user_id], references: [id])
+  user_id Int
   comments Comment[]
   likes Likedpost[]
 }
@@ -47,9 +47,9 @@ model Comment {
   id Int @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  user User @relation(fields: [user_id], references: [username])
-  user_id String
-  post Post @relation(fields: [post_id], references: [id])
+  user User? @relation(fields: [user_id], references: [id])
+  user_id Int
+  post Post? @relation(fields: [post_id], references: [id])
   post_id Int
 }
 
@@ -58,8 +58,8 @@ model Likedpost {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   like Boolean
-  user User @relation(fields: [user_id], references: [username])
-  user_id String
-  post Post @relation(fields: [post_id], references: [id])
+  user User? @relation(fields: [user_id], references: [id])
+  user_id Int
+  post Post? @relation(fields: [post_id], references: [id])
   post_id Int
 }

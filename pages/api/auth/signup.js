@@ -2,6 +2,7 @@ import { PrismaClient } from '@prisma/client'; // on utilise le client pour fair
 import { hash } from 'bcryptjs'; // hash le mot de passe en BDD
 
 export default async function signup(req, res) {
+
     const prisma = new PrismaClient(); // on crée un nouveau client prisma
 
     // seul POST est autorisé
