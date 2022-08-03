@@ -1,7 +1,27 @@
+import Head from 'next/head'
+import styled from 'styled-components'
 import toast, { Toaster } from 'react-hot-toast'
 // import styled from 'styled-components'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
+
+export const SignupStyle = styled.main`
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .container{
+        display: flex;
+        flex-direction: column;
+    }
+
+    form{
+        display: flex;
+        flex-direction: column;
+    }
+`
 
 const Signup = () => {
     const router = useRouter()
@@ -69,15 +89,25 @@ const Signup = () => {
 
     return(
         <>
-        <h1>Inscription</h1>
-        <form onSubmit={handleSignUp}>
-            <input type="text" value={inputedUser.username || ""} placeholder='username' onChange={(e) => setInputedUser({ ...inputedUser, username:e.target.value })}/>
-            <input type="text" value={inputedUser.lastname || ""} placeholder='lastname' onChange={(e) => setInputedUser({ ...inputedUser, lastname:e.target.value })}/>
-            <input type="text" value={inputedUser.firstname || ""} placeholder='firstname' onChange={(e) => setInputedUser({ ...inputedUser, firstname:e.target.value })}/>
-            <input type="text" value={inputedUser.email || ""} placeholder='email' onChange={(e) => setInputedUser({ ...inputedUser, email:e.target.value })}/>
-            <input type="text" value={inputedUser.password || ""} placeholder='password' onChange={(e) => setInputedUser({ ...inputedUser, password:e.target.value })}/>
-            <button type="submit">Submit</button>
-        </form>
+            <Head>
+                <title>Festivapp | Inscription</title>
+                <meta name="description" content="“Festiv'App” est une application qui rassemble tous les adeptes de festivals de musique du monde entier." />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
+
+            <SignupStyle>
+                <div className="container">
+                <h1>Inscription</h1>
+                <form onSubmit={handleSignUp}>
+                    <input type="text" value={inputedUser.username || ""} placeholder='username' onChange={(e) => setInputedUser({ ...inputedUser, username:e.target.value })}/>
+                    <input type="text" value={inputedUser.lastname || ""} placeholder='lastname' onChange={(e) => setInputedUser({ ...inputedUser, lastname:e.target.value })}/>
+                    <input type="text" value={inputedUser.firstname || ""} placeholder='firstname' onChange={(e) => setInputedUser({ ...inputedUser, firstname:e.target.value })}/>
+                    <input type="text" value={inputedUser.email || ""} placeholder='email' onChange={(e) => setInputedUser({ ...inputedUser, email:e.target.value })}/>
+                    <input type="text" value={inputedUser.password || ""} placeholder='password' onChange={(e) => setInputedUser({ ...inputedUser, password:e.target.value })}/>
+                    <button type="submit">Submit</button>
+                </form>
+                </div>
+            </SignupStyle>
         </>
 
     )
