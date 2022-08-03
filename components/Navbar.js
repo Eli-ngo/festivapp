@@ -72,7 +72,12 @@ const Navbar = () => {
                         height={60}
                         />
                     ) : (
-                        'Aucune photo'
+                        <Image
+                        src={'/default_avatar.jpg'}
+                        alt="Profile"
+                        width={90}
+                        height={90}
+                        />
                     )}
                 </div>
             </>

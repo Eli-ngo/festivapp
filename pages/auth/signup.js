@@ -103,7 +103,7 @@ const Signup = () => {
                     <input type="text" value={inputedUser.lastname || ""} placeholder='lastname' onChange={(e) => setInputedUser({ ...inputedUser, lastname:e.target.value })}/>
                     <input type="text" value={inputedUser.firstname || ""} placeholder='firstname' onChange={(e) => setInputedUser({ ...inputedUser, firstname:e.target.value })}/>
                     <input type="text" value={inputedUser.email || ""} placeholder='email' onChange={(e) => setInputedUser({ ...inputedUser, email:e.target.value })}/>
-                    <input type="text" value={inputedUser.password || ""} placeholder='password' onChange={(e) => setInputedUser({ ...inputedUser, password:e.target.value })}/>
+                    <input type="password" value={inputedUser.password || ""} placeholder='password' onChange={(e) => setInputedUser({ ...inputedUser, password:e.target.value })}/>
                     <button type="submit">Submit</button>
                 </form>
                 </div>

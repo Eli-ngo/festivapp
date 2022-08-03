@@ -1,10 +1,9 @@
 import Head from 'next/head'
 import styled from 'styled-components'
-import React from 'react'
 import toast, { Toaster } from 'react-hot-toast'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { useCookies } from 'react-cookie'
+import { useCookies } from 'react-cookie';
 
 export const AddpostStyle = styled.main`
     width: 100%;
@@ -28,8 +27,9 @@ const AddPost = () => {
 
     const router = useRouter()
 
-    const [ cookie, setCookie ] = useCookies(['user']);
     const [user, setUser] = useState()
+    const [ cookie, setCookie ] = useCookies(['user']);
+
 
     const [inputedPost, setInputedPost] = useState({
         id: "",
@@ -80,43 +80,44 @@ const AddPost = () => {
     }
 
     useEffect(() => {
-        if(cookie.user){
-            setUser(cookie.user)
-        }
-
-        if(!cookie.user){
-        toast('Veuillez vous connecter pour accéder à cette page',
-                    {
-                        icon: '❌',
-                        style: {
-                        borderRadius: '10px',
-                        background: '#333',
-                        color: '#fff',
-                        },
-                    }
-                    );
-        router.push('/auth/signin')
-        }
-    }, [cookie.user])
+            if(cookie.user){
+                setUser(cookie.user)
+            }
+    
+            if(!cookie.user){
+            router.push('/auth/signin')
+            toast('Veuillez vous connecter pour accéder à cette page',
+                        {
+                            icon: '❌',
+                            style: {
+                            borderRadius: '10px',
+                            background: '#333',
+                            color: '#fff',
+                            },
+                        }
+                        );
+            }
+        }, [cookie.user])
+        
 
     return(
         <>
-            <Head>
-                <title>Festivapp | Home</title>
-                <meta name="description" content="“Festiv'App” est une application qui rassemble tous les adeptes de festivals de musique du monde entier." />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
+        <Head>
+            <title>Festivapp | Home</title>
+            <meta name="description" content="“Festiv'App” est une application qui rassemble tous les adeptes de festivals de musique du monde entier." />
+            <link rel="icon" href="/favicon.ico" />
+        </Head>
 
-            <AddpostStyle>
-                <div className="container">
+        <AddpostStyle>
+            <div className="container">
                 <h1>Créer un post</h1>
-                    <form onSubmit={handleCreatePost}>
-                        <input value={inputedPost.image} type="text" placeholder="image" onChange={(e) => setInputedPost({... inputedPost, image: e.target.value})}/>
-                        <input value={inputedPost.description} type="text" placeholder="description" onChange={(e) => setInputedPost({... inputedPost, description: e.target.value})}/>
-                        <button type="submit">Créer</button>
-                    </form>
-                </div>
-            </AddpostStyle>
+                <form onSubmit={handleCreatePost}>
+                    <input value={inputedPost.image} type="text" placeholder="image" onChange={(e) => setInputedPost({... inputedPost, image: e.target.value})}/>
+                    <input value={inputedPost.description} type="text" placeholder="description" onChange={(e) => setInputedPost({... inputedPost, description: e.target.value})}/>
+                    <button type="submit">Créer</button>
+                </form>
+            </div>
+        </AddpostStyle>
         </>
 
     )

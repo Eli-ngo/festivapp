@@ -12,6 +12,7 @@ export default function Profile() {
   const [ cookie, setCookie ] = useCookies(['user']);
   const [user, setUser] = useState()
   const [image, setImage] = useState('')
+  const [previewImage, setpreviewImage] = useState();
   
   useEffect(() => {
     if(cookie.user){
@@ -19,6 +20,7 @@ export default function Profile() {
     }
 
     if(!cookie.user){
+      router.push('/auth/signin')
       toast('Veuillez vous connecter pour accéder à cette page',
                 {
                     icon: '❌',
@@ -29,13 +31,13 @@ export default function Profile() {
                     },
                 }
                 );
-      router.push('/auth/signin')
     }
   }, [cookie.user])
 
   const handleChange = (e) => {
     setImage(e.target.files[0])
     console.log(e.target.files[0])
+    setpreviewImage(URL.createObjectURL(e.target.files[0]))
   }
 
   const editImage = async (e) => {
@@ -65,16 +67,31 @@ export default function Profile() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>Bonjour {user?.firstname}</h1>
-      {user?.avatar ? (
-        <Image
-          src={`${user?.avatar}`}
-          alt="Profile"
-          width={90}
-          height={90}
-        />
+
+      {previewImage ? (
+          <img src={previewImage} alt="Preview" width={150} height={150}/>
       ) : (
-        'Aucune photo'
+          <>
+          {user?.avatar? (
+              <Image
+                  src={`${user?.avatar}`}
+                  alt="Photo de profil"
+                  width={150}
+                  height={150}
+                  objectFit="cover"
+              />
+          ) : (
+              <Image
+                  src={'/default_avatar.jpg'}
+                  alt="Photo de profil"
+                  width={150}
+                  height={150}
+                  objectFit="cover"
+              />
+          )} 
+          </>
       )}
+                                        
       <form onSubmit={editImage}>
         <input type="file" accept='.jpg, .jpeg .png, .wepb' onChange={handleChange}/>
         <button type="submit">Modifier</button>
