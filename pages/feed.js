@@ -22,7 +22,7 @@ export default function Feed() {
     <>
     <div>
       <Head>
-        <title>Festivapp | Home</title>
+        <title>Festivapp | Feed</title>
         <meta name="description" content="“Festiv'App” est une application qui rassemble tous les adeptes de festivals de musique du monde entier." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
