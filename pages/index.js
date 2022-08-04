@@ -2,10 +2,13 @@ import Head from 'next/head'
 import { useCookies } from 'react-cookie';
 import { useState, useEffect } from 'react';
 import toast, { Toaster } from 'react-hot-toast'
+import Image from 'next/image';
 
 export default function Feed() {
 
   const [ cookie ] = useCookies(['user']);
+
+  const [user, setUser] = useState()
 
   const [datas, setDatas] = useState([])
 
@@ -41,7 +44,11 @@ export default function Feed() {
 
   useEffect(() => {
     fetchData()
-  }, [])
+      if(cookie.user){
+        setUser(cookie.user)
+      }
+  
+  }, [cookie.user])
 
   return (
     <>
@@ -51,17 +58,17 @@ export default function Feed() {
         <meta name="description" content="“Festiv'App” est une application qui rassemble tous les adeptes de festivals de musique du monde entier." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>Bonjour {cookie?.user?.firstname}</h1>
+      <h1>Bonjour {user?.firstname}</h1>
 
       <h2>FEED</h2>
       <div>
         {datas.map((data, id) => {
           return (
             <div key={id}>
-              <p>{data.image}</p>
+              <Image src={data.image} height={80} width={80}/>
               <p>{data.description}</p>
               <p>{data.user.username}</p> 
-              {cookie?.user?.username === data.user.username ? <button onClick={() => handleDeletePost(data.id)}>Supprimer</button> : null}
+              {user?.username === data.user.username ? <button onClick={() => handleDeletePost(data.id)}>Supprimer</button> : null}
             </div>
           )
         })}

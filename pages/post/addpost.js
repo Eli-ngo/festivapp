@@ -32,6 +32,7 @@ const AddPost = () => {
     const [ cookie, setCookie ] = useCookies(['user']);
     const [user, setUser] = useState()
     const [image, setImage] = useState('')
+    const [description, setDescription] = useState('')
     const [post, setPost] = useState()
     const [previewImage, setpreviewImage] = useState();
 
@@ -40,6 +41,7 @@ const AddPost = () => {
         image: "",
         description: "",
     })
+    
 
     const handleImage = (e) => {
         setImage(e.target.files[0])
@@ -49,21 +51,30 @@ const AddPost = () => {
 
     const handleCreatePost = async (e) => {
         e.preventDefault()
-        
+        const retrieve = new FormData() 
+        retrieve.append('image', image)
+        retrieve.append('description', inputedPost.description)
+        retrieve.append('user_id', user.id)
         const res = await fetch(`/api/post/createpost`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                // id: inputedPost.id,
-                image: inputedPost.image,
-                description: inputedPost.description,
-                user_id: cookie.user.id,
-            }),
+        method: 'POST',
+        body: retrieve
         })
         const json = await res.json()
-        setInputedPost({ id: "", image: "", description: "" }) //on réinitialise les inputs
+        
+        // const res = await fetch(`/api/post/createpost`, {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify({
+        //         // id: inputedPost.id,
+        //         image: inputedPost.image,
+        //         description: inputedPost.description,
+        //         user_id: cookie.user.id,
+        //     }),
+        // })
+        // const json = await res.json()
+        // setInputedPost({ id: "", image: "", description: "" }) //on réinitialise les inputs
         if (res.ok) {
             toast('Post crée',
                 {
@@ -122,7 +133,7 @@ const AddPost = () => {
                 <div className="container">
                 <h1>Créer un post</h1>
                     <form onSubmit={handleCreatePost}>
-                        <input value={inputedPost.image} type="text" placeholder="image" onChange={(e) => setInputedPost({... inputedPost, image: e.target.value})}/>
+                        {/* <input value={inputedPost.image} type="text" placeholder="image" onChange={(e) => setInputedPost({... inputedPost, image: e.target.value})}/> */}
                         <input value={inputedPost.description} type="text" placeholder="description" onChange={(e) => setInputedPost({... inputedPost, description: e.target.value})}/>
                         <input type="file" accept='.jpg, .jpeg, .png, .webp' onChange={handleImage}/>
                         {previewImage ? (
