@@ -61,7 +61,7 @@ const Navbar = () => {
                     <button onClick={(e) => signout(e)}>Se déconnecter</button>
                 </div>
                 <div className="profile">
-                    <Link href="/profile/${user?.username}"><a>Mon profil</a></Link>
+                    <Link href="/profile"><a>Mon profil</a></Link>
                     <Link href="/post/addpost"><a>Ajouter un post</a></Link>
                 </div>
                 <div className="profilepic">
