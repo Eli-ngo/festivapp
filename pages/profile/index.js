@@ -33,7 +33,11 @@ export default function Profile() {
       <p>Pseudo : {user?.firstname}</p>
       <p>Nom de famille : {user?.lastname}</p>
       <p>Email : {user?.email}</p>
-      <Image src={user?.avatar} width={80} height={80}/>
+      {user?.avatar ? (
+        <Image src={user?.avatar} width={80} height={80}/>
+      ) : (
+        <Image src={"/default_avatar.jpg"} width={80} height={80}/>
+      )}
       <button><Link href="/profile/editavatar"><a>Modifier la photo</a></Link></button>
       
     </div>
