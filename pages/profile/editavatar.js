@@ -93,7 +93,7 @@ export default function Profile() {
       )}
                                         
       <form onSubmit={editImage}>
-        <input type="file" accept='.jpg, .jpeg .png, .wepb' onChange={handleChange}/>
+        <input type="file" accept='.jpg, .jpeg .png, .wepb, .gif' onChange={handleChange}/>
         <button type="submit">Modifier</button>
       </form>
       
