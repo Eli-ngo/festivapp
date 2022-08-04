@@ -30,7 +30,7 @@ export default async function signin(req, res) {
             if(!checkPassword){ // si le mot de passe n'est pas bon, on renvoie une erreur
                 res.status(422).json({message: 'Mot de passe incorrect'});
             }else{ // si le mot de passe est bon, on renvoie un token
-                res.status(200).json({
+                res.status(200).json({ //ici on définie tous ce que l'on veut envoyer dans le cookie
                     username: checkUser.username,
                     email: checkUser.email,
                     firstname: checkUser.firstname,
