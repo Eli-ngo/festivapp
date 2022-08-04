@@ -27,7 +27,8 @@ const Navbar = () => {
 
     const signout = (e) => {
         e.preventDefault()
-        removeCookie("user")
+        removeCookie("user", {path: '/'})
+        setUser(null)
         router.push("/")
         toast('Vous êtes déconnecté, à bientôt !',
         {
@@ -50,7 +51,7 @@ const Navbar = () => {
 
     return ( 
         <NavStyle>
-            {cookies.user ? (
+            {user ? (
                 <>
                 <div className="logo">
                 {/* <h1>Festiv&apos;App</h1> */}
@@ -60,13 +61,13 @@ const Navbar = () => {
                     <button onClick={(e) => signout(e)}>Se déconnecter</button>
                 </div>
                 <div className="profile">
-                    <Link href="/profile"><a>Mon profil</a></Link>
+                    <Link href="/user/profile"><a>Mon profil</a></Link>
                     <Link href="/post/addpost"><a>Ajouter un post</a></Link>
                 </div>
                 <div className="profilepic">
-                    {cookies.user?.avatar ? (
+                    {user?.avatar ? (
                         <Image
-                        src={`${cookies.user?.avatar}`}
+                        src={`${user?.avatar}`}
                         alt="Profile"
                         width={60}
                         height={60}

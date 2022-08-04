@@ -46,12 +46,10 @@ export default class MyDocument extends Document {
             <meta httpEquiv="X-UA-Compatible" content="IE=edge"/>
             <meta name="description" content="“Festiv'App” est une application qui rassemble tous les adeptes de festivals de musique du monde entier." />
             <meta name="theme-color" content="#FF0000" />
-            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <meta name="author" content="Elisabeth Ngo" />
             <meta name="copyright" content="Festivapp@2022" />
             <meta name="robots" content="index"/>
             <meta httpEquiv="expires" content="43200"/>
-            <title>Festiv&apos;App</title> 
             <meta property="og:title" content="FestivApp" />
             <meta property="og:type" content="website" />
             <meta property="og:url" content="https://festivapp.fr" />
