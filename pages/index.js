@@ -61,8 +61,7 @@ export default function Feed() {
               <p>{data.image}</p>
               <p>{data.description}</p>
               <p>{data.user.username}</p> 
-              {cookie?.user?.id === data.user_id ? <button onClick={() => handleDeletePost(data.id)}>Supprimer</button> : null}
-              
+              {cookie?.user?.username === data.user.username ? <button onClick={() => handleDeletePost(data.id)}>Supprimer</button> : null}
             </div>
           )
         })}
