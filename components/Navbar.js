@@ -29,7 +29,7 @@ const Navbar = () => {
         e.preventDefault()
         removeCookie("user", {path: '/'})
         setUser(null)
-        router.push("/")
+        router.push("/auth/signin")
         toast('Vous êtes déconnecté, à bientôt !',
         {
             icon: '👏',
