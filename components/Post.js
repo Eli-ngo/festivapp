@@ -66,6 +66,7 @@ const Post = ({ posts }) => {
                         <Image src={post.image} alt={post.description} height={120} width={120} />
                         <p>{post.description}</p>
                         <p>{post.user.username}</p>
+                        <Image src={post.user.avatar} height={50} width={50}/>
                         {user?.username === post.user.username ? <button onClick={() => handleDeletePost(post.id)}>Supprimer</button> : null}
                         
                     </div>

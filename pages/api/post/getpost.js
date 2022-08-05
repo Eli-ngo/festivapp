@@ -10,7 +10,8 @@ export default async function handler(req, res){
             description:true,
             user:{
                 select: {
-                    username:true,
+                    username: true,
+                    avatar: true,
                 }
             }
         },
