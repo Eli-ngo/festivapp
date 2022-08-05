@@ -6,7 +6,8 @@ import Image from 'next/image';
 import Post from '../components/Post';
 
 export const getServerSideProps = async () => {
-  const response = await fetch('http://localhost:3000/api/post/getpost');
+  // const response = await fetch('http://localhost:3000/api/post/getpost');
+  const response = await fetch('https://festivapp.fr/api/post/getpost');
   const datas = await response.json()
   
   return {
