@@ -13,6 +13,9 @@ export default async function handler(req, res){
                     username:true,
                 }
             }
+        },
+        orderBy: {
+            updatedAt: 'desc'
         }
     })
     res.status(200).json(posts)
