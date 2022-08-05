@@ -61,20 +61,6 @@ const AddPost = () => {
         })
         const json = await res.json()
         
-        // const res = await fetch(`/api/post/createpost`, {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify({
-        //         // id: inputedPost.id,
-        //         image: inputedPost.image,
-        //         description: inputedPost.description,
-        //         user_id: cookie.user.id,
-        //     }),
-        // })
-        // const json = await res.json()
-        // setInputedPost({ id: "", image: "", description: "" }) //on réinitialise les inputs
         if (res.ok) {
             toast('Post crée',
                 {
@@ -135,7 +121,7 @@ const AddPost = () => {
                     <form onSubmit={handleCreatePost}>
                         {/* <input value={inputedPost.image} type="text" placeholder="image" onChange={(e) => setInputedPost({... inputedPost, image: e.target.value})}/> */}
                         <input value={inputedPost.description} type="text" placeholder="description" onChange={(e) => setInputedPost({... inputedPost, description: e.target.value})}/>
-                        <input type="file" accept='.jpg, .jpeg, .png, .webp' onChange={handleImage}/>
+                        <input type="file" accept='.jpg, .jpeg, .png, .webp, .gif' onChange={handleImage}/>
                         {previewImage ? (
                         <img src={previewImage} alt="Preview" width={150} height={150}/>
                     ) : (

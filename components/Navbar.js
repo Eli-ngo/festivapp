@@ -61,24 +61,28 @@ const Navbar = () => {
                     <button onClick={(e) => signout(e)}>Se déconnecter</button>
                 </div>
                 <div className="profile">
-                    <Link href="/profile"><a>Mon profil</a></Link>
+                    {/* <Link href="/profile"><a>Mon profil</a></Link> */}
                     <Link href="/post/addpost"><a>Ajouter un post</a></Link>
                 </div>
                 <div className="profilepic">
                     {user?.avatar ? (
-                        <Image
+                        <Link href="/profile">
+                            <a><Image
                         src={`${user?.avatar}`}
                         alt="Profile"
                         width={60}
                         height={60}
-                        />
+                        /></a>
+                        </Link>
                     ) : (
-                        <Image
-                        src={'/default_avatar.jpg'}
+                        <Link href="/profile">
+                            <a><Image
+                        src={`/default_avatar.jpg`}
                         alt="Profile"
-                        width={90}
-                        height={90}
-                        />
+                        width={60}
+                        height={60}
+                        /></a>
+                        </Link>
                     )}
                 </div>
             </>
