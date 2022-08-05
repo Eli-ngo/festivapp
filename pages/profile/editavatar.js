@@ -12,7 +12,7 @@ export default function Profile() {
   const [ cookie, setCookie ] = useCookies(['user']);
   const [user, setUser] = useState()
   const [image, setImage] = useState('')
-  const [previewImage, setpreviewImage] = useState();
+  const [previewImage, setPreviewImage] = useState();
   
   useEffect(() => {
     if(cookie.user){
@@ -37,14 +37,14 @@ export default function Profile() {
   const handleChange = (e) => {
     setImage(e.target.files[0])
     console.log(e.target.files[0])
-    setpreviewImage(URL.createObjectURL(e.target.files[0]))
+    setPreviewImage(URL.createObjectURL(e.target.files[0]))
   }
 
   const editImage = async (e) => {
     e.preventDefault()
     const retrieve = new FormData() //création d'un objet FormData pour récupérer les données d'un formulaire
     retrieve.append('image', image) //ajout de l'image dans l'objet
-    const res = await fetch(`/api/profile/${cookie.user.username}`, {
+    const res = await fetch(`/api/profile/${user.username}`, {
       method: 'POST',
       body: retrieve //on passe l'objet au serveur
     })

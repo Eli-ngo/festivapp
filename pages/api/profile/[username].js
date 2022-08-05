@@ -35,6 +35,7 @@ export default async function handler (req, res) {
                 firstname: modifyUser.firstname,
                 email: modifyUser.email,
                 avatar: modifyUser.avatar,
+                id: parseInt(modifyUser.id),
             })
         }else{
             res.status(500).json({
