@@ -70,9 +70,8 @@ export default function Feed({ posts }) {
         <meta name="description" content="“Festiv'App” est une application qui rassemble tous les adeptes de festivals de musique du monde entier." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>Bonjour {user?.firstname}</h1>
 
-      <h2>FEED</h2>
+      <h1>FEED</h1>
       <Post posts={posts}/>
       
     </div>

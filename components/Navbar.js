@@ -63,7 +63,9 @@ const Navbar = () => {
                 <div className="profile">
                     {/* <Link href="/profile"><a>Mon profil</a></Link> */}
                     <Link href="/post/addpost"><a>Ajouter un post</a></Link>
+                    
                 </div>
+                <p>Bonjour {user?.firstname}</p>
                 <div className="profilepic">
                     {user?.avatar ? (
                         <Link href="/profile">
