@@ -45,6 +45,8 @@ const Post = ({ post, userUsername }) => {
         router.replace(router.asPath)
     }
 
+    console.log(post)
+
     return(
         <PostStyle>
             <div className="container">
@@ -52,10 +54,29 @@ const Post = ({ post, userUsername }) => {
                     <Link href={'/post/' + post?.id}><Image src={post?.image} alt={post?.description} height={120} width={120} /></Link>
                     <p>{post?.description}</p>
                     <p>{post?.user.username}</p>
+                    {!post.comments.length ? (
+                        <p>Aucun commentaire</p>
+                        ) : (
+                            <>
+                            {post.comments?.map((comment, i) => (
+                                <div key={comment.id}>
+                                    <p>{comment.content}</p>
+                                    <p>par {comment.user.username}</p>
+                                    {comment.user?.avatar ? (
+                                    <Image src={comment.user?.avatar} height={30} width={30}/>
+                                ) : (
+                                    'aucune photo'
+                                )}
+
+                                </div>
+                            ))}
+                            </>
+                        )
+                    }
                     {post.user.avatar ? (
                         <Image src={post.user.avatar} height={50} width={50}/>
                     ) : (
-                        'la photo du user'
+                        'aucune photo'
                     )}
                     {userUsername === post?.user.username ? <button onClick={() => handleDeletePost(post.id)}>Supprimer</button> : null}
                     
