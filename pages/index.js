@@ -16,6 +16,18 @@ export const getServerSideProps = async () => {
               username: true,
               avatar: true,
           }
+      },
+      comments: {
+          select: {
+              id: true,
+              content: true,
+              user:{
+                  select: {
+                      username: true,
+                      avatar: true,
+                  }
+              }
+          }
       }
   },
   orderBy: {
