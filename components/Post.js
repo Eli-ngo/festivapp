@@ -54,6 +54,7 @@ const Post = ({ post, userUsername }) => {
                     <Link href={'/post/' + post?.id}><Image src={post?.image} alt={post?.description} height={120} width={120} /></Link>
                     <p>{post?.description}</p>
                     <p>{post?.user.username}</p>
+                    <p>{post?.comments.length} commentaire{post?.comments.length > 1 ? 's' : ''}</p>
                     {!post.comments.length ? (
                         <p>Aucun commentaire</p>
                         ) : (
