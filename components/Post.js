@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Image from "next/image";
 import toast, { Toaster } from "react-hot-toast";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const PostStyle = styled.div`
     display: flex;
@@ -48,7 +49,7 @@ const Post = ({ post, userUsername }) => {
         <PostStyle>
             <div className="container">
                 <div key={post?.id} className="postCard">
-                    <Image src={post?.image} alt={post?.description} height={120} width={120} />
+                    <Link href={'/post/' + post?.id}><Image src={post?.image} alt={post?.description} height={120} width={120} /></Link>
                     <p>{post?.description}</p>
                     <p>{post?.user.username}</p>
                     {post.user.avatar ? (
@@ -65,16 +66,3 @@ const Post = ({ post, userUsername }) => {
 }
 
 export default Post;
-
-{/* <div>
-        {datas.map((data, id) => {
-          return (
-            <div key={id}>
-              <Image src={data.image} height={80} width={80}/>
-              <p>{data.description}</p>
-              <p>{data.user.username}</p> 
-              {user?.username === data.user.username ? <button onClick={() => handleDeletePost(data.id)}>Supprimer</button> : null}
-            </div>
-          )
-        })}
-      </div> */}
