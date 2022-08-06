@@ -28,7 +28,7 @@ model User {
   bio String?
   posts Post[]
   comments Comment[]
-  likes Likedpost[]
+  // likes Likedpost[]
 }
 
 model Post {
@@ -40,26 +40,27 @@ model Post {
   user User? @relation(fields: [user_id], references: [id])
   user_id Int
   comments Comment[]
-  likes Likedpost[]
+  // likes Likedpost[]
 }
 
 model Comment {
   id Int @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  content String
   user User? @relation(fields: [user_id], references: [id])
   user_id Int
   post Post? @relation(fields: [post_id], references: [id])
   post_id Int
 }
 
-model Likedpost {
-  id Int @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  like Boolean
-  user User? @relation(fields: [user_id], references: [id])
-  user_id Int
-  post Post? @relation(fields: [post_id], references: [id])
-  post_id Int
-}
+// model Likedpost {
+//   id Int @id @default(autoincrement())
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+//   like Boolean
+//   user User? @relation(fields: [user_id], references: [id])
+//   user_id Int
+//   post Post? @relation(fields: [post_id], references: [id])
+//   post_id Int
+// }
