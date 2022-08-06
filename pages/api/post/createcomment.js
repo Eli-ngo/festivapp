@@ -9,7 +9,7 @@ export default async function handler(req, res){
             data: {
                 content,
                 post_id,
-                user_id
+                user_id,
             }
         })
         res.status(200).json(comment)
