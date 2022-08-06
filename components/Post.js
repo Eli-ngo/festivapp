@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import Image from "next/image";
-import { useCookies } from 'react-cookie';
-import { useState, useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { useRouter } from "next/router";
 
@@ -18,13 +16,9 @@ const PostStyle = styled.div`
     }
 `
 
-const Post = ({ posts }) => {
+const Post = ({ post, userUsername }) => {
 
     const router = useRouter();
-
-    const [ cookie ] = useCookies(['user']);
-
-    const [user, setUser] = useState()
 
     // DELETE A POST
     const handleDeletePost = async (id) => { //deletes the data based on the id
@@ -50,27 +44,21 @@ const Post = ({ posts }) => {
         router.replace(router.asPath)
     }
 
-    useEffect(() => {
-    // fetchData()
-        if(cookie.user){
-        setUser(cookie.user)
-        }
-    
-    }, [cookie.user])
-
     return(
         <PostStyle>
             <div className="container">
-                {posts.map((post) => (
-                    <div key={post.id} className="postCard">
-                        <Image src={post.image} alt={post.description} height={120} width={120} />
-                        <p>{post.description}</p>
-                        <p>{post.user.username}</p>
+                <div key={post?.id} className="postCard">
+                    <Image src={post?.image} alt={post?.description} height={120} width={120} />
+                    <p>{post?.description}</p>
+                    <p>{post?.user.username}</p>
+                    {post.user.avatar ? (
                         <Image src={post.user.avatar} height={50} width={50}/>
-                        {user?.username === post.user.username ? <button onClick={() => handleDeletePost(post.id)}>Supprimer</button> : null}
-                        
-                    </div>
-                ))}
+                    ) : (
+                        'la photo du user'
+                    )}
+                    {userUsername === post?.user.username ? <button onClick={() => handleDeletePost(post.id)}>Supprimer</button> : null}
+                    
+                </div>
             </div>
         </PostStyle>
     )
