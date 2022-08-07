@@ -23,6 +23,13 @@ const Post = ({ post, userUsername }) => {
 
     // DELETE A POST
     const handleDeletePost = async (id) => { //deletes the data based on the id
+        toast.loading('Suppression en cours...', {
+            style: {
+                borderRadius: '10px',
+                background: '#333',
+                color: '#fff',
+            }
+        })
         const response = await fetch(`/api/post/deletepost`, {
         method: "POST",
         headers: {
@@ -32,6 +39,7 @@ const Post = ({ post, userUsername }) => {
         })
         const json = await response.json()
         console.log(json)
+        toast.remove()
         toast('Votre post a été supprimé',
                     {
                         icon: '✅',

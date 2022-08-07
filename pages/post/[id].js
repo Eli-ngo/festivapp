@@ -120,6 +120,38 @@ const Details = ({ postdetails }) => {
         }
     }
 
+    // DELETE A POST
+    const handleDeletePost = async (id) => { //deletes the data based on the id
+        toast.loading('Suppression en cours...', {
+            style: {
+                borderRadius: '10px',
+                background: '#333',
+                color: '#fff',
+            }
+        })
+        const response = await fetch(`/api/post/deletepost`, {
+        method: "POST",
+        headers: {
+            "Content-type": "application/json",
+        },
+        body: JSON.stringify({ id }),
+        })
+        const json = await response.json()
+        console.log(json)
+        toast.remove()
+        toast('Votre post a été supprimé',
+                    {
+                        icon: '✅',
+                        style: {
+                        borderRadius: '10px',
+                        background: '#333',
+                        color: '#fff',
+                        },
+                    }
+                    );
+        router.push('/')
+    }
+
     useEffect(() => {
         if(cookie?.user){
             setUser(cookie?.user)
@@ -134,6 +166,11 @@ const Details = ({ postdetails }) => {
             </Head>
             <div key={postdetails.id}>
                 <Post post={postdetails} user={user}/>
+                {user?.username === postdetails.user.username ? (
+                    <button onClick={() => handleDeletePost(postdetails.id)}>Supprimer</button>
+                ): (
+                    <></>
+                )}
             </div>
             <form onSubmit={handleCreateComment}>
                 <input value={inputedComment.content || ""} type="text" placeholder="Content" onChange={(e) => setInputedComment({... inputedComment, content: e.target.value})} />

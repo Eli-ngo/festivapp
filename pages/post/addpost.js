@@ -70,7 +70,7 @@ const AddPost = () => {
         
         if (res.ok) {
             toast.remove()
-            toast('Votre post a été créé',
+            toast('Votre post a été publié',
                 {
                     icon: '✅',
                     style: {

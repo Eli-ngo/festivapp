@@ -77,7 +77,7 @@ const Navbar = () => {
                         /></a>
                         </Link>
                     ) : (
-                        <Link href="/profile">
+                        <Link href={`/profile/${user?.username}`}>
                             <a><Image
                         src={`/default_avatar.jpg`}
                         alt="Profile"
