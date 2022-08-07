@@ -57,7 +57,7 @@ const ProfileDetails = ({ profiledetails }) => {
     return(
         <>
             <Head>
-            <title>Festiv&apos;App | Profil détails</title>
+            <title>Festiv&apos;App | {profiledetails.username}</title>
             </Head>
             <div key={profiledetails.id}>
                 <h1>Pseudo : {profiledetails.username}</h1>
