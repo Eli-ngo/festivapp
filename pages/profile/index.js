@@ -25,9 +25,7 @@ export default function Profile() {
     <>
     <div>
       <Head>
-        <title>Festivapp | Profil</title>
-        <meta name="description" content="“Festiv'App” est une application qui rassemble tous les adeptes de festivals de musique du monde entier." />
-        <link rel="icon" href="/favicon.ico" />
+        <title>Festiv&apos;App | Profil</title>
       </Head>
       <h1>Pseudo : {user?.username}</h1>
       <p>Pseudo : {user?.firstname}</p>

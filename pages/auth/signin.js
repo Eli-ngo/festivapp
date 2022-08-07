@@ -50,6 +50,13 @@ const Signin = () => {
                 );
             return
         }else{
+            toast.loading('Connexion en cours...', {
+                style: {
+                    borderRadius: '10px',
+                    background: '#333',
+                    color: '#fff',
+                }
+            })
             const res = await fetch('/api/auth/signin', {
                 method: 'POST',
                 headers: {
@@ -69,6 +76,7 @@ const Signin = () => {
                     maxAge: 1814400, // Expire après 3 semaines
                     sameSite: true,
                 })
+                toast.remove()
                 toast('Bonjour ' + data.firstname,
                 {
                     icon: '✅',
@@ -99,9 +107,7 @@ const Signin = () => {
     return(
         <>
             <Head>
-                <title>Festivapp | Connexion</title>
-                <meta name="description" content="“Festiv'App” est une application qui rassemble tous les adeptes de festivals de musique du monde entier." />
-                <link rel="icon" href="/favicon.ico" />
+                <title>Festiv&apos;App | Connexion</title>
             </Head>
 
             <SigninStyle>
