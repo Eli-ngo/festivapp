@@ -82,7 +82,11 @@ const ProfileDetails = ({ profiledetails }) => {
                     <>
                         {profiledetails.posts.map((elt, i) => (
                         <div key={elt.id}>
-                            <Image src={elt.image} width={100} height={100}/>
+                            <Link href={`/post/${elt.id}`}>
+                                <a>
+                                    <Image src={elt.image} width={100} height={100}/>
+                                </a>
+                            </Link>
                         </div>
                         ))}
                     </>

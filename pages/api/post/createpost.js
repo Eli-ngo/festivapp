@@ -30,16 +30,16 @@ export default async function handler(req, res) {
     if(foundUser){
         if(retrieveImage){
             const uploadedImage = await uploadImage(retrieveImage.filepath)
-            const modifyUser = await prisma.post.create({
+            const newPost = await prisma.post.create({
                 data: {
-                    image: uploadedImage.url,
-                    description: description,
+                    image: uploadedImage.url, //on va créer un post avec l'image qui a été uploadé sur Cloudinary. On récupère son url
+                    description,
                     user_id: foundUser.id,
                 }
             })
             res.status(200).json({
-                image: modifyUser.image,
-                description: modifyUser.description,
+                image: newPost.image,
+                description: newPost.description,
             })
         }else{
             res.status(500).json({
