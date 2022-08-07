@@ -101,19 +101,20 @@ const AddPost = () => {
             setUser(cookie.user)
         }
 
-        if(!user){
-            router.push('/auth/signin')
-            toast('Veuillez vous connecter pour accéder à cette page',
-                {
-                    icon: '❌',
-                    style: {
-                    borderRadius: '10px',
-                    background: '#333',
-                    color: '#fff',
-                    },
-                }
-                );
-        }
+        // if(!user){
+        //     router.push('/auth/signin')
+        //     toast('Veuillez vous connecter pour accéder à cette page',
+        //         {
+        //             icon: '❌',
+        //             style: {
+        //             borderRadius: '10px',
+        //             background: '#333',
+        //             color: '#fff',
+        //             },
+        //         }
+        //         );
+        // }
+
     }, [cookie.user])
 
     return(
