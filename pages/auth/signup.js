@@ -106,11 +106,11 @@ const Signup = () => {
                 <div className="container">
                 <h1>Inscription</h1>
                 <form onSubmit={handleSignUp}>
-                    <input type="text" value={inputedUser.username || ""} placeholder='username' onChange={(e) => setInputedUser({ ...inputedUser, username:e.target.value })}/>
-                    <input type="text" value={inputedUser.lastname || ""} placeholder='lastname' onChange={(e) => setInputedUser({ ...inputedUser, lastname:e.target.value })}/>
-                    <input type="text" value={inputedUser.firstname || ""} placeholder='firstname' onChange={(e) => setInputedUser({ ...inputedUser, firstname:e.target.value })}/>
-                    <input type="text" value={inputedUser.email || ""} placeholder='email' onChange={(e) => setInputedUser({ ...inputedUser, email:e.target.value })}/>
-                    <input type="password" value={inputedUser.password || ""} placeholder='password' onChange={(e) => setInputedUser({ ...inputedUser, password:e.target.value })}/>
+                    <input type="text" value={inputedUser.username || ""} placeholder='Pseudo' onChange={(e) => setInputedUser({ ...inputedUser, username:e.target.value })}/>
+                    <input type="text" value={inputedUser.lastname || ""} placeholder='Nom' onChange={(e) => setInputedUser({ ...inputedUser, lastname:e.target.value })}/>
+                    <input type="text" value={inputedUser.firstname || ""} placeholder='Prénom' onChange={(e) => setInputedUser({ ...inputedUser, firstname:e.target.value })}/>
+                    <input type="text" value={inputedUser.email || ""} placeholder='Adresse email' onChange={(e) => setInputedUser({ ...inputedUser, email:e.target.value })}/>
+                    <input type="password" value={inputedUser.password || ""} placeholder='Mot de passe' onChange={(e) => setInputedUser({ ...inputedUser, password:e.target.value })}/>
                     <button type="submit">Submit</button>
                 </form>
                 </div>
