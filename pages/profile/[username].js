@@ -59,6 +59,7 @@ const ProfileDetails = ({ profiledetails }) => {
             <Head>
             <title>Festiv&apos;App | {profiledetails.username}</title>
             </Head>
+            
             <div key={profiledetails.id}>
                 <h1>Pseudo : {profiledetails.username}</h1>
                 <p>Prénom : {profiledetails.firstname}</p>

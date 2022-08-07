@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client" // on utilise le client pour faire des requêtes à la base de données
-import { getImage } from "../../../utils/formidable" // on utilise la fonction getImage pour récupérer les images
-import { uploadImage } from "../../../utils/cloudinary" // on utilise la fonction uploadImage pour uploader les images
+import { getImage } from "../../../configfiles/formidable" // on utilise la fonction getImage pour récupérer les images
+import { uploadImage } from "../../../configfiles/cloudinary" // on utilise la fonction uploadImage pour uploader les images
 
 const prisma = new PrismaClient()
 

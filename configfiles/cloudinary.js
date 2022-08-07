@@ -6,9 +6,9 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_SECRET_KEY,
 });
 
-export function uploadImage(file) {
-    return new Promise((resolve, reject) => {
-        cloudinary.uploader.upload(
+export function uploadImage(file) { // on upload l'image sur Cloudinary
+    return new Promise((resolve, reject) => { // on crée une promesse
+        cloudinary.uploader.upload( // on upload l'image
             file, 
             { width: 400, height: 400, crop: "fill", folder: "festivapp" },
             (err, result) => {
