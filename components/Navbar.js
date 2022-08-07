@@ -68,7 +68,7 @@ const Navbar = () => {
                 <p>Bonjour {user?.firstname}</p>
                 <div className="profilepic">
                     {user?.avatar ? (
-                        <Link href="/profile">
+                        <Link href={`/profile/${user?.username}`}>
                             <a><Image
                         src={`${user?.avatar}`}
                         alt="Profile"

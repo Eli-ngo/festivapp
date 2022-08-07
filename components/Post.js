@@ -53,7 +53,7 @@ const Post = ({ post, userUsername }) => {
                 <div key={post?.id} className="postCard">
                     <Link href={'/post/' + post?.id}><Image src={post?.image} alt={post?.description} height={120} width={120} /></Link>
                     <p>{post?.description}</p>
-                    <p>{post?.user.username}</p>
+                    <Link href={`/profile/${post?.user.username}`}><a>{post?.user.username}</a></Link>
                     <p>{post?.comments.length} commentaire{post?.comments.length > 1 ? 's' : ''}</p>
                     {!post.comments.length ? (
                         <p>Aucun commentaire</p>
@@ -62,7 +62,7 @@ const Post = ({ post, userUsername }) => {
                             {post.comments?.map((comment, i) => (
                                 <div key={comment.id}>
                                     <p>{comment.content}</p>
-                                    <p>par {comment.user?.username}</p>
+                                    <p>par <Link href={`/profile/${comment.user?.username}`}><a>{comment.user?.username}</a></Link></p>
                                     {comment.user?.avatar ? (
                                     <Image src={comment.user?.avatar} height={30} width={30}/>
                                 ) : (
