@@ -62,7 +62,7 @@ const Post = ({ post, userUsername }) => {
                             {post.comments?.map((comment, i) => (
                                 <div key={comment.id}>
                                     <p>{comment.content}</p>
-                                    <p>par {comment.user.username}</p>
+                                    <p>par {comment.user?.username}</p>
                                     {comment.user?.avatar ? (
                                     <Image src={comment.user?.avatar} height={30} width={30}/>
                                 ) : (
