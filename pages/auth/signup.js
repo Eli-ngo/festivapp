@@ -39,7 +39,7 @@ const Signup = () => {
     const handleSignUp = async (e) => {
         e.preventDefault() //on empêche le rechargement de la page
         if (!inputedUser.username || !inputedUser.email || !inputedUser.email.includes('@') || !inputedUser.password || !inputedUser.lastname || !inputedUser.firstname) {
-            toast('Connexion échouée',
+            toast('Erreur de saisie',
                 {
                     icon: '❌',
                     style: {
@@ -50,6 +50,13 @@ const Signup = () => {
                 }
                 );
         }else{
+            toast.loading('Création du compte en cours...', {
+                style: {
+                    borderRadius: '10px',
+                    background: '#333',
+                    color: '#fff',
+                }
+            })
             const res = await fetch('/api/auth/signup', {
                 method: 'POST',
                 headers: {
@@ -61,6 +68,7 @@ const Signup = () => {
             });
             const data = await res.json(); //on récupère les données de la BDD
             if (res.ok) {
+                toast.remove()
                 toast('Utilisateur crée',
                 {
                     icon: '✅',
@@ -73,7 +81,8 @@ const Signup = () => {
                 );
                 router.push('/auth/signin')
             } else {
-                toast('Erreur',
+                toast.remove()
+                toast('Erreur lors de la création du compte',
                 {
                     icon: '❌',
                     style: {
@@ -90,9 +99,7 @@ const Signup = () => {
     return(
         <>
             <Head>
-                <title>Festivapp | Inscription</title>
-                <meta name="description" content="“Festiv'App” est une application qui rassemble tous les adeptes de festivals de musique du monde entier." />
-                <link rel="icon" href="/favicon.ico" />
+                <title>Festiv&apos;App | Inscription</title>
             </Head>
 
             <SignupStyle>

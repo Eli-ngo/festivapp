@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import Post from "../../components/Post"
 import { useCookies } from "react-cookie"
 import { useState, useEffect } from "react";
@@ -68,6 +69,13 @@ const Details = ({ postdetails }) => {
 
     const handleCreateComment = async (e) => {
         e.preventDefault()
+        toast.loading('Chargement en cours...', {
+            style: {
+                borderRadius: '10px',
+                background: '#333',
+                color: '#fff',
+            }
+        })
         const res = await fetch('/api/post/createcomment', {
             method: 'POST',
             headers: {
@@ -80,12 +88,35 @@ const Details = ({ postdetails }) => {
                 post_id: postdetails.id,
             })
         })
+        if(!user){
+            router.push('/auth/signin')
+        }
         if(res.ok){
             router.replace(router.asPath)
-            toast.success('Commentaire crée')
+            toast.remove()
+            toast('Commentaire ajouté',
+                {
+                    icon: '✅',
+                    style: {
+                    borderRadius: '10px',
+                    background: '#333',
+                    color: '#fff',
+                    },
+                }
+            );
             setInputedComment({ id: "", content: "", user_id: "", post_id: "" }) //on réinitialise les inputs
         }else{
-            toast.error('Erreur')
+            toast.remove()
+            toast('Veuillez vous connecter pour pouvoir commenter',
+                {
+                    icon: '❌',
+                    style: {
+                    borderRadius: '10px',
+                    background: '#333',
+                    color: '#fff',
+                    },
+                }
+            );
         }
     }
 
@@ -98,6 +129,9 @@ const Details = ({ postdetails }) => {
 
     return(
         <>
+            <Head>
+            <title>Festiv&apos;App | Page détails</title>
+            </Head>
             <div key={postdetails.id}>
                 <Post post={postdetails} user={user}/>
             </div>

@@ -19,19 +19,19 @@ export default function Profile() {
       setUser(cookie.user)
     }
 
-    // if(!cookie.user){
-    //   router.push('/auth/signin')
-    //   toast('Veuillez vous connecter pour accéder à cette page',
-    //             {
-    //                 icon: '❌',
-    //                 style: {
-    //                 borderRadius: '10px',
-    //                 background: '#333',
-    //                 color: '#fff',
-    //                 },
-    //             }
-    //             );
-    // }
+    if(!user){
+      router.push('/auth/signin')
+      toast('Veuillez vous connecter pour accéder à cette page',
+        {
+            icon: '❌',
+            style: {
+            borderRadius: '10px',
+            background: '#333',
+            color: '#fff',
+            },
+        }
+      );
+    }
   }, [cookie.user])
 
   const handleChange = (e) => {
@@ -44,6 +44,13 @@ export default function Profile() {
     e.preventDefault()
     const retrieve = new FormData() //création d'un objet FormData pour récupérer les données d'un formulaire
     retrieve.append('image', image) //ajout de l'image dans l'objet
+    toast.loading('Modification en cours...', {
+      style: {
+        borderRadius: '10px',
+        background: '#333',
+        color: '#fff',
+      }
+    })
     const res = await fetch(`/api/profile/${user.username}`, {
       method: 'POST',
       body: retrieve //on passe l'objet au serveur
@@ -54,17 +61,39 @@ export default function Profile() {
         path: '/',
         maxAge: 1814400, // Expire après 3 semaines
         sameSite: true,
-    })
+      })
+      toast.remove()
+      toast('Avatar modifié',
+              {
+                  icon: '✅',
+                  style: {
+                  borderRadius: '10px',
+                  background: '#333',
+                  color: '#fff',
+                  },
+              }
+      );
+    }else{
+      toast.remove()
+      toast('Erreur lors de la modification',
+              {
+                  icon: '❌',
+                  style: {
+                  borderRadius: '10px',
+                  background: '#333',
+                  color: '#fff',
+                  },
+              }
+      );
     }
+      
   }
 
   return (
     <>
     <div>
       <Head>
-        <title>Festivapp | Profil</title>
-        <meta name="description" content="“Festiv'App” est une application qui rassemble tous les adeptes de festivals de musique du monde entier." />
-        <link rel="icon" href="/favicon.ico" />
+        <title>Festiv&apos;App | Modifier l&apos;avatar</title>
       </Head>
       <h1>Bonjour {user?.firstname}</h1>
 

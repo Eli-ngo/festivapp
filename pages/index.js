@@ -59,9 +59,7 @@ export default function Feed({ posts }) {
     <>
     <div>
       <Head>
-        <title>Festivapp | Home</title>
-        <meta name="description" content="“Festiv'App” est une application qui rassemble tous les adeptes de festivals de musique du monde entier." />
-        <link rel="icon" href="/favicon.ico" />
+        <title>Festiv&apos;App | Feed</title>
       </Head>
 
       <h1>FEED</h1>
