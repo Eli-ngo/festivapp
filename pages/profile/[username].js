@@ -74,6 +74,19 @@ const ProfileDetails = ({ profiledetails }) => {
                 ):(
                     <></>
                 )}
+
+
+                {!profiledetails.posts.length ? (
+                    <p>Aucun post</p>
+                ) : (
+                    <>
+                        {profiledetails.posts.map((elt, i) => (
+                        <div key={elt.id}>
+                            <Image src={elt.image} width={100} height={100}/>
+                        </div>
+                        ))}
+                    </>
+                )}
             </div>
         </>
     )
