@@ -63,7 +63,7 @@ const Post = ({ post, userUsername }) => {
                     <p>{post?.description}</p>
                     <Link href={`/profile/${post?.user.username}`}><a>{post?.user.username}</a></Link>
                     <p>{post?.comments.length} commentaire{post?.comments.length > 1 ? 's' : ''}</p>
-                    {!post.comments.length ? (
+                    {/* {!post.comments.length ? (
                         <p>Aucun commentaire</p>
                         ) : (
                             <>
@@ -81,7 +81,7 @@ const Post = ({ post, userUsername }) => {
                             ))}
                             </>
                         )
-                    }
+                    } */}
                     {post.user.avatar ? (
                         <Image src={post.user.avatar} height={50} width={50}/>
                     ) : (

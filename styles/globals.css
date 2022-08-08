@@ -11,8 +11,10 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
+  font-family: 'Poppins', sans-serif;
+  background: #efefef;
 }
 
 a {
@@ -27,6 +29,23 @@ a {
 button{
   all: unset;
   cursor: pointer;
+}
+
+.defaultButton{
+  font-weight: bold;
+  font-size: 14px;
+  padding: 6px 40px;
+  color: #ffffff;
+  background: linear-gradient(90.32deg, #FF951A 8.05%, #7E3500 82.81%);
+  border: 1px solid linear-gradient(90.32deg, #FF951A 8.05%, #7E3500 82.81%);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+}
+.defaultButton:hover{
+  color: #000000;
+  background: transparent;
+  border: 1px solid #000000;
+  transition:  all 0.3s ease-in-out;
 }
 
 @media (prefers-color-scheme: light) {

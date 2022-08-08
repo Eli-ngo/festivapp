@@ -4,6 +4,23 @@ import { useState, useEffect } from 'react';
 import Post from '../components/Post';
 import Link from 'next/link';
 import { PrismaClient } from '@prisma/client';
+import styled from 'styled-components';
+
+const HomeStyle = styled.div`
+    width: 100%;
+    padding: 30px;
+
+    .feed__container{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .home__title{
+      font-family: 'Nexa-Bold';
+      text-align: left;
+    }
+`
 
 export const getServerSideProps = async () => {
   const prisma = new PrismaClient()
@@ -58,23 +75,27 @@ export default function Feed({ posts }) {
 
   return (
     <>
-    <div>
+    <HomeStyle>
       <Head>
         <title>Festiv&apos;App | Feed</title>
       </Head>
 
-      <h1>FEED</h1>
-      {user ? (
-        <Link href="/post/addpost"><a><button>Ajouter un post</button></a></Link>
-      ):(
-        <>
-        </>
-      )}
+      <div className="feed__container">
+        <h1 className='home__title'>Feed</h1>
+        {user ? (
+          <Link href="/post/addpost"><a><button className='defaultButton'>+ ajouter un post</button></a></Link>
+        ):(
+          <>
+          </>
+        )}
+      </div>
+      <p>Bienvenue sur le feed des posts dédiés aux festivals de musique du monde entier. Partagez vos moments de bonheur.</p>
+
       {posts.map((elt, i) => (
         <Post post={elt} key={i} userUsername={user?.username} />
       ))}
       
-    </div>
+    </HomeStyle>
     </>
   )
 }
