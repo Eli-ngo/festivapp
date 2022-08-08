@@ -114,7 +114,7 @@ padding: 0 50px;
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
-            gap: 140px;
+            gap: 100px;
 
             &--profile{
                 display: flex;
