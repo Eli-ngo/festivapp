@@ -40,6 +40,7 @@ const PostStyle = styled.div`
 
             &--avatar{
                 border-radius: 50%;
+                cursor: pointer;
             }
         }
 

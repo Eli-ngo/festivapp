@@ -20,6 +20,10 @@ const HomeStyle = styled.div`
       font-family: 'Nexa-Bold';
       text-align: left;
     }
+
+    .home__description{
+      margin-bottom: 80px;
+    }
 `
 
 export const getServerSideProps = async () => {
@@ -89,7 +93,7 @@ export default function Feed({ posts }) {
           </>
         )}
       </div>
-      <p>Bienvenue sur le feed des posts dédiés aux festivals de musique du monde entier. Partagez vos moments de bonheur.</p>
+      <p className='home__description'>Bienvenue sur le feed des posts dédiés aux festivals de musique du monde entier. Partagez vos moments de bonheur.</p>
 
       {posts.map((elt, i) => (
         <Post post={elt} key={i} userUsername={user?.username} />
