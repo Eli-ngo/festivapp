@@ -1,3 +1,12 @@
+/* FONTS */
+@font-face{
+  font-family: "Nexa-Bold";
+  src: url("../public/fonts/nexa_bold-webfont.woff") format("woff"),
+  url("../public/fonts/nexa_bold-webfont.woff2") format("woff2");
+  font-weight: normal;
+  font-display: swap;
+}
+
 html,
 body {
   padding: 0;
@@ -13,6 +22,11 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+button{
+  all: unset;
+  cursor: pointer;
 }
 
 @media (prefers-color-scheme: light) {

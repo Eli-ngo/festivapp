@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { useCookies } from 'react-cookie';
 import { useState, useEffect } from 'react';
 import Post from '../components/Post';
+import Link from 'next/link';
 import { PrismaClient } from '@prisma/client';
 
 export const getServerSideProps = async () => {
@@ -63,6 +64,12 @@ export default function Feed({ posts }) {
       </Head>
 
       <h1>FEED</h1>
+      {user ? (
+        <Link href="/post/addpost"><a><button>Ajouter un post</button></a></Link>
+      ):(
+        <>
+        </>
+      )}
       {posts.map((elt, i) => (
         <Post post={elt} key={i} userUsername={user?.username} />
       ))}

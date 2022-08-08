@@ -60,31 +60,31 @@ const ProfileDetails = ({ profiledetails }) => {
     return(
         <>
             <Head>
-            <title>Festiv&apos;App | {profiledetails.username}</title>
+            <title>Festiv&apos;App | {profiledetails?.username}</title>
             </Head>
             
-            <div key={profiledetails.id}>
-                <h1>Pseudo : {profiledetails.username}</h1>
-                <p>Prénom : {profiledetails.firstname}</p>
-                <p>Nom : {profiledetails.lastname}</p>
-                <p>Email : {profiledetails.email}</p>
-                {profiledetails.avatar ? (
-                    <Image src={profiledetails.avatar} width={80} height={80}/>
+            <div key={profiledetails?.id}>
+                <h1>Pseudo : {profiledetails?.username}</h1>
+                <p>Prénom : {profiledetails?.firstname}</p>
+                <p>Nom : {profiledetails?.lastname}</p>
+                <p>Email : {profiledetails?.email}</p>
+                {profiledetails?.avatar ? (
+                    <Image src={profiledetails?.avatar} width={80} height={80}/>
                 ) : (
                     <Image src={"/default_avatar.jpg"} width={80} height={80}/>
                 )}
-                {user?.id === profiledetails.id ? (
+                {user?.id === profiledetails?.id ? (
                     <button><Link href="/profile/editavatar"><a>Modifier la photo</a></Link></button>
                 ):(
                     <></>
                 )}
 
 
-                {!profiledetails.posts.length ? (
+                {!profiledetails?.posts.length ? (
                     <p>Aucun post</p>
                 ) : (
                     <>
-                        {profiledetails.posts.map((elt, i) => (
+                        {profiledetails?.posts.map((elt, i) => (
                         <div key={elt.id}>
                             <Link href={`/post/${elt.id}`}>
                                 <a>
