@@ -132,6 +132,8 @@ padding: 0 50px;
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
+            gap: 160px;
             &--auth{
                 display: flex;
                 flex-direction: column;
@@ -363,6 +365,8 @@ const Navbar = () => {
                                 <Link href="/auth/signup"><a className='auth__signup'>Créer un compte</a></Link>
                                 <Link href="/auth/signin"><a className='auth__signin'>Se connecter</a></Link>
                             </div>
+
+                            <Image src="/logo/festivapp_logo.svg" alt="Festivapp logo" width={90} height={90} />
 
                             <div className="close" onClick={() => setIsOpen(!isOpen)}>
                                 <div className="closeline"></div>
