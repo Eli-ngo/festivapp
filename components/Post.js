@@ -9,6 +9,7 @@ const PostStyle = styled.div`
     justify-content: center;
     align-items: center;
     
+    /* card mobile */
     .postCard{
         width: 260px;
         background: #ffffff;
@@ -23,6 +24,10 @@ const PostStyle = styled.div`
 
         @media only screen and (min-width: 425px) {
             width: 370px;
+        }
+
+        @media only screen and (min-width: 768px) {
+            display: none;
         }
 
         &__author{
@@ -114,9 +119,87 @@ const PostStyle = styled.div`
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                font-size: 0.75rem;
+
+                @media only screen and (min-width: 375px) {
+                    font-size: 0.875rem;
+                }
             }
         }
+    } 
+    /* end postCard */
 
+    /* card desktop */
+    .postCardDesktop{
+        display: none;
+        @media only screen and (min-width: 768px) {
+            display: flex;
+            background: #ffffff;
+            margin-bottom: 100px;
+            padding: 20px 20px 10px 20px;
+            border-radius: 20px;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            gap: 30px;
+        }
+
+        .postCardDesktopLeft{
+            width: 400px;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            &__infos{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                
+                &--stats{
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 10px;
+
+                    &__likes{
+                        display: flex;
+                    }
+                    &__comments{
+                        display: flex;
+                    }
+                }
+
+                &--author{
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 10px;
+
+                    &__avatar{
+                        border-radius: 50%;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            &__actions{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+        .postCardDesktopRight{
+            &__image{
+                @media only screen and (min-width: 768px) {
+                    border-radius: 50px 0 50px 0;
+                    cursor: pointer;
+                    width: 240px;
+                    height: 240px;
+                }
+                @media only screen and (min-width: 1024px) {
+
+                    width: 500px;
+                    height: 500px;
+                }
+            }
+        }
     }
 `
 
@@ -160,67 +243,97 @@ const Post = ({ post, userUsername }) => {
 
     return(
         <PostStyle>
-            <div className="container">
-                <div key={post?.id} className="postCard">
-                    <div className="postCard__author">
-                        <div className="postCard__author--infos">
-                        {post.user.avatar ? (
-                            <Link href={`/profile/${post?.user.username}`}>
-                                <Image src={post.user.avatar} height={47} width={47} alt="photo de profil auteur" className='postCard__author--avatar'/>
-                            </Link>
-                        ) : (
-                            <Link href={`/profile/${post?.user.username}`}>
-                                <Image src={`/default_avatar.jpg`} height={47} width={47} alt="photo de profil auteur par défaut" className='postCard__author--avatar'/>
-                            </Link>
-                        )}
+            {/* card mobile */}
+            <div key={post?.id} className="postCard">
+                <div className="postCard__author">
+                    <div className="postCard__author--infos">
+                    {post.user.avatar ? (
+                        <Link href={`/profile/${post?.user.username}`}>
+                            <Image src={post.user.avatar} height={47} width={47} alt="photo de profil auteur" className='postCard__author--avatar'/>
+                        </Link>
+                    ) : (
+                        <Link href={`/profile/${post?.user.username}`}>
+                            <Image src={`/default_avatar.jpg`} height={47} width={47} alt="photo de profil auteur par défaut" className='postCard__author--avatar'/>
+                        </Link>
+                    )}
 
-                        <Link href={`/profile/${post?.user.username}`}><a>{post?.user.username}</a></Link>
-                    </div>
-                    {userUsername === post?.user.username ? <button onClick={() => handleDeletePost(post.id)} className='postCard__options--delete'>Supprimer</button> : null}
-                    </div>
-                    
-                    
-                    {/* <div className="postCard__author">
-                        {post.user.avatar ? (
-                            <Link href={`/profile/${post?.user.username}`}>
-                                <Image src={post.user.avatar} height={47} width={47} alt="photo de profil auteur" className='postCard__author--avatar'/>
-                            </Link>
-                        ) : (
-                            <Link href={`/profile/${post?.user.username}`}>
-                                <Image src={`/default_avatar.jpg`} height={47} width={47} alt="photo de profil auteur par défaut" className='postCard__author--avatar'/>
-                            </Link>
-                        )}
+                    <Link href={`/profile/${post?.user.username}`}><a>{post?.user.username}</a></Link>
+                </div>
+                {userUsername === post?.user.username ? <button onClick={() => handleDeletePost(post.id)} className='postCard__options--delete'>Supprimer</button> : null}
+                </div>
+            
+                <Link href={'/post/' + post?.id}><p className="postCard__description">{post?.description}</p></Link>
 
-                        <Link href={`/profile/${post?.user.username}`}><a>{post?.user.username}</a></Link>
+                <div className="postCard__stats">
+                    <div className="postCard__stats--likes">
+                        <Image src={'/img/likes_icon.svg'} width={30} height={30}/>
+                        <p>26</p>
                     </div>
-                    {userUsername === post?.user.username ? <button onClick={() => handleDeletePost(post.id)} className='postCard__options--delete'>Supprimer</button> : null} */}
-                    <Link href={'/post/' + post?.id}><p className="postCard__description">{post?.description}</p></Link>
+                    <div className="postCard__stats--comments">
+                        <Link href={'/post/' + post?.id}><Image src={'/img/comments_icon.svg'} width={30} height={30} className="postCard__stats--comments__icon"/></Link>
+                        <Link href={'/post/' + post?.id}><p className="postCard__stats--comments__text">{post?.comments.length}</p></Link>
+                    </div>
+                </div>
 
-                    <div className="postCard__stats">
-                        <div className="postCard__stats--likes">
-                            <Image src={'/img/likes_icon.svg'} width={30} height={30}/>
-                            <p>26</p>
+                <Link href={'/post/' + post?.id}><img src={post?.image} alt={post?.description} className='postCard__image'/></Link>
+
+                <div className="postCard__options">
+                    <div className="postCard__options--actions">
+                        <Image src={'/img/fav_icon.svg'} width={30} height={30}/>
+                        <Image src={'/img/share_icon.svg'} width={30} height={30}/>
+                    </div>
+                </div>
+
+                {/* <div className="postCard__options--details">
+                        <Link href={'/post/' + post?.id}><a className="postCard__options--comments">Voir les commentaires</a></Link>
+                </div>     */}
+                
+            </div>
+            {/* end card mobile */}
+
+
+            {/* card desktop */}
+            <div className="postCardDesktop">
+                <div className="postCardDesktopLeft">
+                    <div className="postCardDesktopLeft__infos">
+                        <div className="postCardDesktopLeft__infos--author">
+                            {post.user.avatar ? (
+                            <Link href={`/profile/${post?.user.username}`}>
+                                <Image src={post.user.avatar} height={47} width={47} alt="photo de profil auteur" className='postCardDesktopLeft__infos--author__avatar'/>
+                            </Link>
+                            ) : (
+                                <Link href={`/profile/${post?.user.username}`}>
+                                    <Image src={`/default_avatar.jpg`} height={47} width={47} alt="photo de profil auteur par défaut" className='postCardDesktopLeft__infos--author__avatar'/>
+                                </Link>
+                            )}
+
+                            <Link href={`/profile/${post?.user.username}`}><a>{post?.user.username}</a></Link>
                         </div>
-                        <div className="postCard__stats--comments">
-                            <Link href={'/post/' + post?.id}><Image src={'/img/comments_icon.svg'} width={30} height={30} className="postCard__stats--comments__icon"/></Link>
-                            <Link href={'/post/' + post?.id}><p className="postCard__stats--comments__text">{post?.comments.length}</p></Link>
+
+                        <div className="postCardDesktopLeft__infos--stats">
+                            <div className="postCardDesktopLeft__infos--stats__likes">
+                                <Image src={'/img/likes_icon.svg'} width={30} height={30}/>
+                                <p>26</p>
+                            </div>
+                            <div className="postCardDesktopLeft__infos--stats__comments">
+                                <Image src={'/img/comments_icon.svg'} width={30} height={30}/>
+                                <p>{post?.comments.length}</p>
+                            </div>
                         </div>
                     </div>
-
-                    <Link href={'/post/' + post?.id}><img src={post?.image} alt={post?.description} className='postCard__image'/></Link>
-
-                    <div className="postCard__options">
-                        <div className="postCard__options--actions">
+                    <div className="postCardDesktopLeft__description">
+                        <Link href={'/post/' + post?.id}><p>{post?.description}</p></Link>
+                    </div>
+                    <div className="postCardDesktopLeft__actions">
+                        <div className="postCardDesktopLeft__actions--options">
                             <Image src={'/img/fav_icon.svg'} width={30} height={30}/>
                             <Image src={'/img/share_icon.svg'} width={30} height={30}/>
                         </div>
-                        {/* {userUsername === post?.user.username ? <button onClick={() => handleDeletePost(post.id)} className='postCard__options--delete'>Supprimer</button> : null} */}
+                        {userUsername === post?.user.username ? <button onClick={() => handleDeletePost(post.id)} className='postCard__options--delete'>Supprimer</button> : null}
                     </div>
-
-                    {/* <div className="postCard__options--details">
-                            <Link href={'/post/' + post?.id}><a className="postCard__options--comments">Voir les commentaires</a></Link>
-                    </div>     */}
-                    
+                </div>
+                <div className="postCardDesktopRight">
+                    <Link href={'/post/' + post?.id}><img src={post?.image} alt={post?.description} className='postCardDesktopRight__image'/></Link>
                 </div>
             </div>
         </PostStyle>
