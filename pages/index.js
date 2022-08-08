@@ -93,8 +93,7 @@ export default function Feed({ posts }) {
 
       {posts.map((elt, i) => (
         <Post post={elt} key={i} userUsername={user?.username} />
-      ))}
-      
+      ))}    
     </HomeStyle>
     </>
   )

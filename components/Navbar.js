@@ -29,7 +29,7 @@ padding: 0 50px;
             padding: 15px;
             width: 30px;
             position: absolute;
-            right: 40px;
+            right: 30px;
             top: 9px;
 
             &:hover .bar:first-child{
@@ -91,8 +91,8 @@ padding: 0 50px;
             position: absolute;
             width: 50px;
             height: 50px;
-            right: 40px;
-            top: 20px;
+            right: 30px;
+            top: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
