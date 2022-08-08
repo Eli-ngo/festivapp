@@ -326,9 +326,16 @@ const Navbar = () => {
                     {/***** DESKTOP *****/}
                     <div className="logo">
                         <Link href="/">
-                            <a>
+                            <a className='logo__desktop'>
                                 <h1>
                                     <Image src="/logo/festivapp_logo.svg" alt="Festivapp logo" width={90} height={90} />
+                                </h1>
+                            </a>
+                        </Link>
+                        <Link href="/">
+                            <a className='logo__mobile'>
+                                <h1>
+                                    <Image src="/logo/festivapp_logo_mobile.svg" alt="Festivapp logo" width={30} height={30}/>
                                 </h1>
                             </a>
                         </Link>
