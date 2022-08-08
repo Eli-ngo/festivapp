@@ -163,6 +163,10 @@ const PostStyle = styled.div`
                     }
                     &__comments{
                         display: flex;
+
+                        &--icon{
+                            cursor: pointer;
+                        }
                     }
                 }
 
@@ -183,6 +187,12 @@ const PostStyle = styled.div`
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
+            }
+
+            &__description{
+                &--text{
+                    cursor: pointer;
+                }
             }
         }
         .postCardDesktopRight{
@@ -316,13 +326,13 @@ const Post = ({ post, userUsername }) => {
                                 <p>26</p>
                             </div>
                             <div className="postCardDesktopLeft__infos--stats__comments">
-                                <Image src={'/img/comments_icon.svg'} width={30} height={30}/>
-                                <p>{post?.comments.length}</p>
+                                <Link href={'/post/' + post?.id}><Image src={'/img/comments_icon.svg'} width={30} height={30} className='postCardDesktopLeft__infos--stats__comments--icon'/></Link>
+                                <Link href={'/post/' + post?.id}><p className='postCardDesktopLeft__infos--stats__comments--icon'>{post?.comments.length}</p></Link>
                             </div>
                         </div>
                     </div>
                     <div className="postCardDesktopLeft__description">
-                        <Link href={'/post/' + post?.id}><p>{post?.description}</p></Link>
+                        <Link href={'/post/' + post?.id}><p className="postCardDesktopLeft__description--text">{post?.description}</p></Link>
                     </div>
                     <div className="postCardDesktopLeft__actions">
                         <div className="postCardDesktopLeft__actions--options">
