@@ -148,6 +148,15 @@ const PostStyle = styled.div`
             display: flex;
             justify-content: space-between;
             flex-direction: column;
+
+            @media only screen and (min-width: 768px) {
+                width: 400px;
+            }
+
+            @media only screen and (min-width: 1440px) {
+                width: 500px;
+            }
+
             &__infos{
                 display: flex;
                 align-items: center;
@@ -206,6 +215,12 @@ const PostStyle = styled.div`
                     height: 240px;
                 }
                 @media only screen and (min-width: 1024px) {
+
+                    width: 400px;
+                    height: 400px;
+                }
+
+                @media only screen and (min-width: 1440px) {
 
                     width: 500px;
                     height: 500px;
