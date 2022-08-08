@@ -13,7 +13,7 @@ const PostStyle = styled.div`
         width: 260px;
         background: #ffffff;
         margin-bottom: 50px;
-        padding: 20px;
+        padding: 20px 20px 10px 20px;
         border-radius: 20px;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
@@ -28,9 +28,15 @@ const PostStyle = styled.div`
         &__author{
             display: flex;
             align-items: center;
-            justify-content: start;
-            gap: 15px;
+            justify-content: space-between;
             margin-bottom: 30px;
+
+            &--infos{
+                display: flex;
+                align-items: center;
+                justify-content: start;
+                gap: 15px;
+            }
 
             &--avatar{
                 border-radius: 50%;
@@ -54,6 +60,10 @@ const PostStyle = styled.div`
             }
         }
 
+        &__description{
+            cursor: pointer;
+        }
+
         &__stats{
             display: flex;
             align-items: center;
@@ -69,10 +79,19 @@ const PostStyle = styled.div`
             &--comments{
                 display: flex;
                 gap: 5px;
+
+                &__icon, 
+                &__text{
+                    cursor: pointer;
+                }
             }
         }
 
         &__options{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
             &--comments{
                 display: flex;
                 align-items: center;
@@ -143,6 +162,7 @@ const Post = ({ post, userUsername }) => {
             <div className="container">
                 <div key={post?.id} className="postCard">
                     <div className="postCard__author">
+                        <div className="postCard__author--infos">
                         {post.user.avatar ? (
                             <Link href={`/profile/${post?.user.username}`}>
                                 <Image src={post.user.avatar} height={47} width={47} alt="photo de profil auteur" className='postCard__author--avatar'/>
@@ -155,7 +175,25 @@ const Post = ({ post, userUsername }) => {
 
                         <Link href={`/profile/${post?.user.username}`}><a>{post?.user.username}</a></Link>
                     </div>
-                    <p>{post?.description}</p>
+                    {userUsername === post?.user.username ? <button onClick={() => handleDeletePost(post.id)} className='postCard__options--delete'>Supprimer</button> : null}
+                    </div>
+                    
+                    
+                    {/* <div className="postCard__author">
+                        {post.user.avatar ? (
+                            <Link href={`/profile/${post?.user.username}`}>
+                                <Image src={post.user.avatar} height={47} width={47} alt="photo de profil auteur" className='postCard__author--avatar'/>
+                            </Link>
+                        ) : (
+                            <Link href={`/profile/${post?.user.username}`}>
+                                <Image src={`/default_avatar.jpg`} height={47} width={47} alt="photo de profil auteur par défaut" className='postCard__author--avatar'/>
+                            </Link>
+                        )}
+
+                        <Link href={`/profile/${post?.user.username}`}><a>{post?.user.username}</a></Link>
+                    </div>
+                    {userUsername === post?.user.username ? <button onClick={() => handleDeletePost(post.id)} className='postCard__options--delete'>Supprimer</button> : null} */}
+                    <Link href={'/post/' + post?.id}><p className="postCard__description">{post?.description}</p></Link>
 
                     <div className="postCard__stats">
                         <div className="postCard__stats--likes">
@@ -163,8 +201,8 @@ const Post = ({ post, userUsername }) => {
                             <p>26</p>
                         </div>
                         <div className="postCard__stats--comments">
-                            <Image src={'/img/comments_icon.svg'} width={30} height={30}/>
-                            <p>{post?.comments.length}</p>
+                            <Link href={'/post/' + post?.id}><Image src={'/img/comments_icon.svg'} width={30} height={30} className="postCard__stats--comments__icon"/></Link>
+                            <Link href={'/post/' + post?.id}><p className="postCard__stats--comments__text">{post?.comments.length}</p></Link>
                         </div>
                     </div>
 
@@ -175,12 +213,12 @@ const Post = ({ post, userUsername }) => {
                             <Image src={'/img/fav_icon.svg'} width={30} height={30}/>
                             <Image src={'/img/share_icon.svg'} width={30} height={30}/>
                         </div>
-                        <div className="postCard__options--details">
-                            <Link href={'/post/' + post?.id}><a className="postCard__options--comments">Voir les commentaires</a></Link>
-                            {userUsername === post?.user.username ? <button onClick={() => handleDeletePost(post.id)} className='postCard__options--delete'>Supprimer</button> : null}
-                        </div>
+                        {/* {userUsername === post?.user.username ? <button onClick={() => handleDeletePost(post.id)} className='postCard__options--delete'>Supprimer</button> : null} */}
                     </div>
-                
+
+                    {/* <div className="postCard__options--details">
+                            <Link href={'/post/' + post?.id}><a className="postCard__options--comments">Voir les commentaires</a></Link>
+                    </div>     */}
                     
                 </div>
             </div>
