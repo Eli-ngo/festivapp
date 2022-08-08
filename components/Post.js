@@ -68,6 +68,7 @@ const PostStyle = styled.div`
 
         &__description{
             cursor: pointer;
+            word-wrap: break-word;
         }
 
         &__stats{
@@ -192,6 +193,7 @@ const PostStyle = styled.div`
             &__description{
                 &--text{
                     cursor: pointer;
+                    word-wrap: break-word;
                 }
             }
         }
