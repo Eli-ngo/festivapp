@@ -146,7 +146,7 @@ export default function Profile() {
       </Head>
 
       <EditavatarStyle>
-        <h1 className='title'>Modifier l'avatar</h1>
+        <h1 className='title'>Modifier l&apos;avatar</h1>
         <div className="editAvatar">
           <form onSubmit={editImage} className='editAvatar__form'>
             <div className="editAvatar__form--box">
