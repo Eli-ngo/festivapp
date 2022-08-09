@@ -331,7 +331,7 @@ const Signup = () => {
                                 <input type="password" value={inputedUser.password || ""} placeholder='Mot de passe' onChange={(e) => setInputedUser({ ...inputedUser, password:e.target.value })} className='signupMobileBottom__form--input'/>
                             </div>
                             <p className='signupMobileBottom__form--disclaimer'>En continuant, j&apos;accepte les termes légaux, les conditions générales d&apos;utilisation et la politique de confidentialité de l&apos;application </p>
-                            <button type="submit" className='submitButton'>s'inscrire</button>
+                            <button type="submit" className='submitButton'>s&apos;inscrire</button>
                         </form>
 
                         <div className="signupMobileBottom__suggestion">
@@ -340,7 +340,7 @@ const Signup = () => {
                         </div>
 
                         <div className="signupMobileBottom__back">
-                            <Link href="/"><a className='signupMobileBottom__back--action'>Retour à l'accueil</a></Link>
+                            <Link href="/"><a className='signupMobileBottom__back--action'>Retour à l&apos;accueil</a></Link>
                         </div>
                     </div>
                 </div>
@@ -382,7 +382,7 @@ const Signup = () => {
                                         <input type="password" value={inputedUser.password || ""} placeholder='Mot de passe' onChange={(e) => setInputedUser({ ...inputedUser, password:e.target.value })} className='signupDesktopRight__form--input'/>
                                     </div>
                                     <p className='signupMobileBottom__form--disclaimer'>En continuant, j&apos;accepte les termes légaux, les conditions générales d&apos;utilisation et la politique de confidentialité de l&apos;application </p>
-                                    <button type="submit" className='submitButton'>s'inscrire</button>
+                                    <button type="submit" className='submitButton'>s&apos;inscrire</button>
                                 </form>
                                 <div className="signupDesktopRight__suggestion">
                                     <p>Vous avez déjà un compte ? </p>
@@ -390,7 +390,7 @@ const Signup = () => {
                                 </div>
 
                                 <div className="signupDesktopRight__back">
-                                    <Link href="/"><a className='signupDesktopRight__back--action'>Retour à l'accueil</a></Link>
+                                    <Link href="/"><a className='signupDesktopRight__back--action'>Retour à l&apos;accueil</a></Link>
                                 </div>
                             </div>
                         </div>
