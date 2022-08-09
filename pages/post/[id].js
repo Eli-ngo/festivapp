@@ -20,6 +20,11 @@ const PostDetailsStyle = styled.div`
             font-family: 'Nexa-Bold';
             font-size: 2rem;
         }
+        
+        &__number{
+            font-size: 1.4rem;
+        }
+
         &__addcomment{
             background: #fff;
             padding: 10px 20px;
@@ -34,8 +39,6 @@ const PostDetailsStyle = styled.div`
             }
         }
         &__displaycomments{
-            background: #fff;
-            padding: 20px;
             border-radius: 10px;
             margin-top: 30px;
 
@@ -47,6 +50,9 @@ const PostDetailsStyle = styled.div`
 
             &--box{
                 margin-bottom: 30px;
+                background: #fff;
+                border-radius: 10px;
+                padding: 10px;
             }
 
             &--avatar{
@@ -243,6 +249,8 @@ const Details = ({ postdetails }) => {
                         <input className='mobile__addcomment--input' value={inputedComment.content || ""} type="text" placeholder="Ajouter un commentaire" onChange={(e) => setInputedComment({... inputedComment, content: e.target.value})} />
                         <button type="submit"><Image src='/img/send_icon.svg' width={30} height={30} alt='bouton ajouter commentaires' /></button>
                     </form>
+
+                    <h2 className='mobile__number'>Commentaires ({postdetails?.comments?.length})</h2>
                     <div className="mobile__displaycomments">
                         {!postdetails?.comments.length ? (
                             <p>Aucun commentaire</p>
