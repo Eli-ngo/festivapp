@@ -314,7 +314,7 @@ const Navbar = () => {
                                 <Image src="/img/sign_out_icon.svg" alt="boutton déconnexion mobile" width={20} height={20} />
                             </button>
 
-                            <Image src="/logo/festivapp_logo.svg" alt="Festivapp logo mobile" width={90} height={90} />
+                            <Image src="/logo/festivapp_logo_color_white.svg" alt="Festivapp logo mobile" width={100} height={100} />
 
                             <div className="close" onClick={() => setIsOpen(!isOpen)}>
                                 <div className="closeline"></div>
@@ -366,7 +366,7 @@ const Navbar = () => {
                                 <Link href="/auth/signin"><a className='auth__signin'>Se connecter</a></Link>
                             </div>
 
-                            <Image src="/logo/festivapp_logo.svg" alt="Festivapp logo mobile" width={90} height={90} />
+                            <Image src="/logo/festivapp_logo_color_white.svg" alt="Festivapp logo mobile" width={100} height={100} />
 
                             <div className="close" onClick={() => setIsOpen(!isOpen)}>
                                 <div className="closeline"></div>
