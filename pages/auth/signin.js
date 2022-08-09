@@ -73,7 +73,7 @@ const Signin = () => {
             if(res.ok){
                 setCookie("user", JSON.stringify(data), {
                     path: "/", //nous passons 3 arguments à la méthode setCookie(). Le premier est le nom du cookie, le second est la valeur du cookie, le troisième permet d'accéder au cookie sur toutes les pages.
-                    maxAge: 1814400, // Expire après 3 semaines
+                    maxAge: 259200, // Expire après 3 jours
                     sameSite: true,
                 })
                 toast.remove()
@@ -110,6 +110,7 @@ const Signin = () => {
                 <title>Festiv&apos;App | Connexion</title>
             </Head>
 
+            <Toaster position="bottom-center" reverseOrder={false}/>
             <SigninStyle>
                 <div className="container">
                     <h1>Se connecter</h1>

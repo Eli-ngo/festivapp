@@ -24,6 +24,19 @@ function MyApp({ Component, pageProps }) { // pageProps est un objet qui contien
       router.events.off ('routeChangeComplete', handleRouteChange)
     }
   }, [router.events])
+
+  if(router.asPath =='/auth/signup')  {
+    return (
+      <Component {...pageProps} />
+    )
+  }
+
+  if(router.asPath =='/auth/signin')  {
+    return (
+      <Component {...pageProps} />
+    )
+  }
+
   return (
     <>
       {/* Google Tag Manager */}

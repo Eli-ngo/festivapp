@@ -59,7 +59,7 @@ export default function Profile() {
     if(res.ok){
       setCookie("user", JSON.stringify(json), {
         path: '/',
-        maxAge: 1814400, // Expire après 3 semaines
+        maxAge: 259200, // Expire après 3 jours
         sameSite: true,
       })
       toast.remove()
