@@ -4,6 +4,56 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import toast, { Toaster } from 'react-hot-toast';
+import styled from 'styled-components';
+
+const EditavatarStyle = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px 20px;
+
+    .title{
+        font-size: 1.625rem;
+        font-family: 'Nexa-Bold'
+    }
+
+    .editAvatar{
+        background: #ffffff;
+        border-radius: 20px;
+        padding: 20px;
+
+        &__form{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;    
+            justify-content: center;
+
+            &--box{
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 30px;
+                gap: 10px;
+            }
+
+            &--avatar, &--preview{
+                border-radius: 50%;
+            }
+
+            &--submit{
+                text-transform: uppercase;
+                color: #ffffff;
+                background: #000000;
+                padding: 10px 30px;
+                font-weight: bold;
+                border-radius: 10px;
+            }
+        }
+        
+    }
+`;
 
 export default function Profile() {
 
@@ -91,42 +141,50 @@ export default function Profile() {
 
   return (
     <>
-    <div>
       <Head>
         <title>Festiv&apos;App | Modifier l&apos;avatar</title>
       </Head>
-      <h1>Bonjour {user?.firstname}</h1>
 
-      {previewImage ? (
-          <img src={previewImage} alt="Preview" width={150} height={150}/>
-      ) : (
-          <>
-          {user?.avatar? (
-              <Image
-                  src={`${user?.avatar}`}
-                  alt="Photo de profil"
-                  width={150}
-                  height={150}
-                  objectFit="cover"
-              />
-          ) : (
-              <Image
-                  src={'/default_avatar.jpg'}
-                  alt="Photo de profil"
-                  width={150}
-                  height={150}
-                  objectFit="cover"
-              />
-          )} 
-          </>
-      )}
-                                        
-      <form onSubmit={editImage}>
-        <input type="file" accept='.jpg, .jpeg .png, .wepb, .gif' onChange={handleChange}/>
-        <button type="submit">Modifier</button>
-      </form>
+      <EditavatarStyle>
+        <h1 className='title'>Modifier l'avatar</h1>
+        <div className="editAvatar">
+          <form onSubmit={editImage} className='editAvatar__form'>
+            <div className="editAvatar__form--box">
+              <input type="file" accept='.jpg, .jpeg .png, .wepb, .gif' onChange={handleChange}/>
+            </div>
+            
+            <div className="editAvatar__form--box">
+              {previewImage ? (
+                  <Image src={previewImage} alt="Preview" width={250} height={250} className='editAvatar__form--preview' objectFit='cover'/>
+              ) : (
+                  <>
+                  {user?.avatar? (
+                      <Image
+                          src={`${user?.avatar}`}
+                          alt="Photo de profil"
+                          width={250}
+                          height={250}
+                          objectFit="cover"
+                          className='editAvatar__form--avatar'
+                      />
+                  ) : (
+                    <Image
+                        src={'/default_avatar.jpg'}
+                        alt="Photo de profil"
+                        width={250}
+                        height={250}
+                        objectFit="cover"
+                        className='editAvatar__form--avatar'
+                    />
+                  )} 
+                  </>
+              )}
+            </div>
+            <button type="submit" className='editAvatar__form--submit'>Modifier</button>
+          </form>
+        </div>
+      </EditavatarStyle>
       
-    </div>
     </>
   )
 }
