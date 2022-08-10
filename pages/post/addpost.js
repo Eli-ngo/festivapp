@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useCookies } from 'react-cookie'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export const AddpostStyle = styled.main`
     width: 100%;
@@ -62,6 +63,22 @@ export const AddpostStyle = styled.main`
                 border: solid 1px grey;
             }
 
+            &--actions{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                gap: 25px;
+
+            }
+            
+            &--back{
+                    display: flex;
+                    justify-content: center;
+                    padding: 10px 20px;
+                    border: solid 1px black;
+                    border-radius: 10px;
+            }
         }
     }
 `
@@ -198,7 +215,10 @@ const AddPost = () => {
                             <textarea className='addPost__form--description' value={inputedPost.description} type="text" placeholder="description" onChange={(e) => setInputedPost({... inputedPost, description: e.target.value})}/>
                         </div>
 
-                        <button type="submit" className='addPost__form--submit'>ajouter</button>
+                        <div className="addPost__form--actions">
+                            <Link href="/"><a className='addPost__form--back'>retour</a></Link>
+                            <button type="submit" className='addPost__form--submit'>ajouter</button>
+                        </div>
                     </form>
                 </div>
             </AddpostStyle>

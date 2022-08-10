@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import toast, { Toaster } from 'react-hot-toast';
 import styled from 'styled-components';
+import Link from 'next/link';
 
 const EditavatarStyle = styled.div`
     width: 100%;
@@ -49,6 +50,22 @@ const EditavatarStyle = styled.div`
                 padding: 10px 30px;
                 font-weight: bold;
                 border-radius: 10px;
+            }
+
+            &--actions{
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: space-between;
+              gap: 25px;
+            }
+
+            &--back{
+                    display: flex;
+                    justify-content: center;
+                    padding: 10px 20px;
+                    border: solid 1px black;
+                    border-radius: 10px;
             }
         }
         
@@ -180,7 +197,10 @@ export default function Profile() {
                   </>
               )}
             </div>
-            <button type="submit" className='editAvatar__form--submit'>Modifier</button>
+            <div className="editAvatar__form--actions">
+              <Link href={`/profile/${user?.username}`}><a className='editAvatar__form--back'>retour</a></Link>
+              <button type="submit" className='editAvatar__form--submit'>Modifier</button>
+            </div>
           </form>
         </div>
       </EditavatarStyle>
