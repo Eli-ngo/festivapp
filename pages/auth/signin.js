@@ -5,6 +5,7 @@ import { useCookies } from 'react-cookie'
 import { useState } from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export const SigninStyle = styled.main`
     width: 100%;
@@ -30,6 +31,7 @@ export const SigninStyle = styled.main`
 
         @media only screen and (min-width: 768px){
             width: 50%;
+            display: none;
         }
 
         &__top{
@@ -67,7 +69,7 @@ export const SigninStyle = styled.main`
                 width: 100%;
                 border: none;
                 border-bottom: 2px solid  #000000;
-                padding: 10px 0;
+                padding: 10px 10px;
             }
         }
 
@@ -77,7 +79,106 @@ export const SigninStyle = styled.main`
             padding: 10px;
             border: solid 1px black;
             border-radius: 10px;
-}
+        }
+    }
+
+    /* desktop version */
+    .desktop{
+        display: none;
+
+        @media only screen and (min-width: 768px){
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 100%;
+        }
+
+        .desktopLeft{
+            width: 40%;
+            background: url('/img/auth_bg.webp') no-repeat 0 0 / cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .desktopRight{
+            width: 60%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            &__container{
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 50px;
+            }
+
+            &__top{
+                &:nth-child(1){
+                    font-family: 'Nexa-Bold';
+                }
+                width: 70%;
+
+                @media only screen and (min-width: 768px){
+                    width: 50%;
+                }
+            }
+
+            &__form{
+                width: 70%;
+
+                @media only screen and (min-width: 768px){
+                    width: 50%;
+                }
+
+                &--box{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    justify-content: center;
+                    margin-bottom: 20px;
+                }
+
+                &--input{
+                    width: 100%;
+                    border: none;
+                    border-bottom: 2px solid  #000000;
+                    padding: 10px 10px;
+                }
+
+                &--forgotten{
+                    display: flex;
+                    justify-content: flex-end;
+                    text-decoration: underline;
+                }
+
+                &--suggestion{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    &__action{
+                        font-weight: bold;
+                        color: #FF961A;
+                    }
+                }
+            }
+            
+            &__back{
+                display: flex;
+                justify-content: center;
+                padding: 10px;
+                border: solid 1px black;
+                border-radius: 10px;
+            }
+
+        }
     }
 `
 
@@ -203,14 +304,49 @@ const Signin = () => {
                         <Link href="/"><a className='mobile__back--action'>Retour à l&apos;accueil</a></Link>
                     </div>
                 </div>
-                {/* <div className="container">
-                    <h1>Se connecter</h1>
-                    <form method='POST' onSubmit={handleSignIn}>
-                            <input type="text" value={inputedUser.username || ""} placeholder='Pseudo' onChange={(e) => setInputedUser({ ...inputedUser, username:e.target.value })}/>
-                            <input type="password"  value={inputedUser.password || ""} placeholder='Mot de passe' onChange={(e) => setInputedUser({ ...inputedUser, password:e.target.value })}/>
-                            <button type='submit'>Se connecter</button>
-                    </form>
-                </div> */}
+
+                {/* desktop version */}
+
+                <div className="desktop">
+                    <div className="desktopLeft">
+                        <Image src='/logo/festivapp_logo.svg' width={120} height={120} alt='festivapp logo' className='desktopLeft--logo'/>
+                    </div>
+
+                    <div className="desktopRight">
+                        <div className="desktopRight__container">
+                            <div className="desktopRight__top">
+                                <h1>Bon retour</h1>
+                                <h2>Qui va là ?</h2>
+                            </div>
+
+                            <form method='POST' onSubmit={handleSignIn} className='desktopRight__form'>
+                                    <div className="desktopRight__form--fieds">
+                                        <div className="desktopRight__form--box">
+                                            <label>Pseudo</label>
+                                            <input className='desktopRight__form--input' type="text" value={inputedUser.username || ""} placeholder='Pseudo' onChange={(e) => setInputedUser({ ...inputedUser, username:e.target.value })}/>
+                                        </div>
+                                        <div className="desktopRight__form--box">
+                                            <label>Mot de passe</label>
+                                            <input className='desktopRight__form--input' type="password"  value={inputedUser.password || ""} placeholder='Mot de passe' onChange={(e) => setInputedUser({ ...inputedUser, password:e.target.value })}/>
+                                        </div>
+                                    </div>
+                                    <p className='desktopRight__form--forgotten'>Mot de passe oublié ?</p>
+
+                                    <div className="desktopRight__form--suggestion">
+                                        <button type='submit' className='submitButton'>Se connecter</button>
+                                        <p>Vous n'avez pas de compte ?</p>
+                                        <Link href="/auth/signup"><a className='desktopRight__form--suggestion__action'>Rejoignez-nous !</a></Link>
+                                    </div>
+
+                            </form>
+
+                            <div className="desktopRight__back">
+                                <Link href="/"><a className='desktopRight__back--action'>Retour à l&apos;accueil</a></Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </SigninStyle>
         </>
     )
