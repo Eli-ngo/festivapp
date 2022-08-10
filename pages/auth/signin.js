@@ -295,7 +295,7 @@ const Signin = () => {
 
                             <div className="mobile__form--suggestion">
                                 <button type='submit' className='submitButton'>Se connecter</button>
-                                <p>Vous n'avez pas de compte ?</p>
+                                <p>Vous n&apos;avez pas de compte ?</p>
                                 <Link href="/auth/signup"><a className='mobile__form--suggestion__action'>Rejoignez-nous !</a></Link>
                             </div>
 
@@ -335,7 +335,7 @@ const Signin = () => {
 
                                     <div className="desktopRight__form--suggestion">
                                         <button type='submit' className='submitButton'>Se connecter</button>
-                                        <p>Vous n'avez pas de compte ?</p>
+                                        <p>Vous n&apos;avez pas de compte ?</p>
                                         <Link href="/auth/signup"><a className='desktopRight__form--suggestion__action'>Rejoignez-nous !</a></Link>
                                     </div>
 
