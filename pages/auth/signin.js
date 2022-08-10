@@ -162,6 +162,7 @@ export const SigninStyle = styled.main`
                     flex-direction: column;
                     justify-content: space-between;
                     align-items: center;
+                    margin-top: 50px;
 
                     &__action{
                         font-weight: bold;
