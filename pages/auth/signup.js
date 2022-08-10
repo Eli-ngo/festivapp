@@ -18,8 +18,8 @@ export const SignupStyle = styled.main`
         height: 120vh;
     }
 
-    @media only screen and (min-width: 1440px) {
-        height: 110vh;
+    @media only screen and (min-width: 1080px) {
+        height: 100vh;
     }
 
     /* mobile version */
