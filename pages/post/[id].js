@@ -162,7 +162,12 @@ const Details = ({ postdetails }) => {
             router.push('/auth/signin')
         }
         if(res.ok){
-            router.replace(router.asPath)
+            router.replace({
+                pathname: router.asPath},
+                undefined, {
+                    scroll: false
+                }
+            )
             toast.remove()
             toast('Commentaire ajouté',
                 {
