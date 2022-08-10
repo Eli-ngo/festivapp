@@ -346,7 +346,7 @@ const Signup = () => {
                                 </div>
                                 <div className="mobile__form--box">
                                     <label>Mot de passe</label>
-                                    <input type="password" value={inputedUser.password || ""} placeholder='Mot de passe' onChange={(e) => setInputedUser({ ...inputedUser, password:e.target.value })} className='mobile__form--input'/>
+                                    <input type="password" value={inputedUser.password || ""} placeholder='Mot de passe' onChange={(e) => setInputedUser({ ...inputedUser, password:e.target.value })} className='mobile__form--input' minLength={8}/>
                                 </div>
                             </div>
 
@@ -404,7 +404,7 @@ const Signup = () => {
                                         </div>
                                         <div className="desktopRight__form--box">
                                             <label>Mot de passe</label>
-                                            <input type="password" value={inputedUser.password || ""} placeholder='Mot de passe' onChange={(e) => setInputedUser({ ...inputedUser, password:e.target.value })} className='desktopRight__form--input'/>
+                                            <input type="password" value={inputedUser.password || ""} placeholder='Mot de passe' onChange={(e) => setInputedUser({ ...inputedUser, password:e.target.value })} className='desktopRight__form--input' minLength={8}/>
                                         </div>
                                     </div>
 
