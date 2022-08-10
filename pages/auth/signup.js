@@ -8,215 +8,247 @@ import Image from 'next/image'
 
 export const SignupStyle = styled.main`
     width: 100%;
-    background: #ffffff;
-    /* display: flex;
+    height: 130vh;
+    display: flex;
     justify-content: center;
     align-items: center;
-    background: #ffffff; */
+    background: #ffffff;
+
+    @media only screen and (min-width: 768px) {
+        height: 120vh;
+    }
+
+    @media only screen and (min-width: 1440px) {
+        height: 110vh;
+    }
 
     /* mobile version */
-    .signupMobile{
-        background: #ffffff;
-        width: 100%;
+
+    .mobile{
         height: 100%;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        gap: 30px;
-        padding: 40px 20px;
+        justify-content: center;
+        align-items: space-between;
+        gap: 50px;
+        width: 80%;
 
-        @media only screen and (min-width: 768px) {
-            width: 60%;
+        @media only screen and (min-width: 425px){
+            width: 80%;
         }
 
-        @media only screen and (min-width: 1024px) {
+        @media only screen and (min-width: 768px){
+            width: 50%;
             display: none;
         }
 
-        .signupMobileTop{
-            width: 100%;
-            font-family: 'Nexa-Bold';
-            &__welcome{
-                font-size: 1.875rem;
+        &__top{
+            &:nth-child(1){
+                font-family: 'Nexa-Bold';
+                font-size: 0.9rem;
             }
         }
 
-        .signupMobileBottom{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            &__form{
+        &__form{
+            &--box{
                 display: flex;
                 flex-direction: column;
-                align-items: center;
-                justify-content: center;
-
-                &--box{
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-start;
-                    margin-bottom: 22px;
-                }
-                &--input{
-                    width: 280px;
-                    border: none;
-                    border-bottom: solid 2px black;
-                    padding: 10px 0;
-
-                    @media only screen and (min-width: 375px) {
-                        width: 330px;
-                    }
-
-                    @media only screen and (min-width: 425px) {
-                        width: 380px;
-                    }
-
-                }
-                &--disclaimer{
-                    font-size: 0.875rem;
-                }
-            }
-            &__suggestion{
-                display: flex;
-                flex-direction: column;
-                align-items: center;
+                align-items: flex-start;
                 justify-content: center;
                 margin-bottom: 20px;
+            }
+            &--forgotten{
+                display: flex;
+                justify-content: flex-end;
+                text-decoration: underline;
+            }
+            &--suggestion{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                margin-top: 40px;
 
-                &--action{
+                &__action{
                     font-weight: bold;
                     color: #FF961A;
                 }
             }
-
-            &__back{
-                &--action{
-                    padding: 10px;
-                    border: solid 1px black;
-                    border-radius: 5px;
-                }
+            
+            &--input{
+                width: 100%;
+                border: none;
+                border-bottom: 2px solid  #000000;
+                padding: 10px 10px;
             }
+
+            &--disclaimer p{
+                font-size: 0.875rem;
+            }
+        }
+
+        &__back{
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            border: solid 1px black;
+            border-radius: 10px;
         }
     }
 
     /* desktop version */
-    .signupDesktop{
+    .desktop{
         display: none;
-        width: 100%;
 
-        @media only screen and (min-width: 1024px) {
+        @media only screen and (min-width: 768px){
             display: flex;
+            flex-direction: row;
             width: 100%;
-            height: 100vh;
+            height: 100%;
         }
 
-        .signupDesktopLeft{
+        .desktopLeft{
             width: 40%;
             background: url('/img/auth_bg.webp') no-repeat 0 0 / cover;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-end;
-                }
+        }
 
-        .signupDesktopRightContainer{
+        .desktopRight{
+            width: 60%;
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 60%;
-            height: 100vh;
-            padding: 20px 160px;
-
-            .signupDesktopRight{
-                width: 50%;
-            background: #ffffff;
-            padding: 40px;
-            display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: space-evenly;
 
-            &__top{
-                font-family: 'Nexa-Bold';
+            &__container{
                 width: 100%;
-            }
-
-            &__bottom{
                 display: flex;
                 flex-direction: column;
+                justify-content: center;
                 align-items: center;
-                justify-content: space-between;
+                gap: 50px;
+            }
+
+            &__top{
+                &:nth-child(1){
+                    font-family: 'Nexa-Bold';
+                }
+                width: 70%;
+
+                @media only screen and (min-width: 1024px){
+                    width: 60%;
+                }
+
+                @media only screen and (min-width: 1200px){
+                    width: 50%;
+                }
+
+                @media only screen and (min-width: 1440px){
+                    width: 40%;
+                }
             }
 
             &__form{
-                display: flex;
-                flex-direction: column;
-                align-items: start;
-                justify-content: flex-start;
+                width: 70%;
 
-                &--fullname{
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    justify-content: space-between;
-                    gap: 30px;
+                @media only screen and (min-width: 1024px){
+                    width: 60%;
+                }
 
+                @media only screen and (min-width: 1200px){
+                    width: 50%;
+                }
+
+                @media only screen and (min-width: 1440px){
+                    width: 40%;
                 }
 
                 &--box{
                     display: flex;
                     flex-direction: column;
-                    margin-bottom: 22px;
+                    align-items: flex-start;
+                    justify-content: center;
+                    margin-bottom: 20px;
+
+                    &__username{
+                        display: flex;
+                        justify-content: space-between;
+                        gap: 20px;
+
+                        @media only screen and (min-width: 1024px){
+                            gap: 20px;
+                        }
+                    }
                 }
 
                 &--input{
-                    width: 380px;
+                    width: 100%;
                     border: none;
-                    border-bottom: solid 2px black;
-                    padding: 10px 0;
+                    border-bottom: 2px solid  #000000;
+                    padding: 10px 10px;
 
-                    &__name{
+                    &__lastname{
                         width: 100%;
                         border: none;
-                        border-bottom: solid 2px black;
-                        padding: 10px 0;
+                        border-bottom: 2px solid  #000000;
+                        padding: 10px 10px;
+
+                        /* @media only screen and (min-width: 1440px){
+                            width: 220px;
+                        } */
+                    }
+
+                    &__firstname{
+                        width: 100%;
+                        border: none;
+                        border-bottom: 2px solid  #000000;
+                        padding: 10px 10px;
+                        
+                        /* @media only screen and (min-width: 1440px){
+                            width: 220px;
+                        } */
                     }
                 }
-            }
 
-            &__disclaimer{
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-            }
+                &--forgotten{
+                    display: flex;
+                    justify-content: flex-end;
+                    text-decoration: underline;
+                }
 
-            &__suggestion{
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                margin-bottom: 40px;
-                gap: 10px;
+                &--suggestion{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-top: 50px;
 
-                &--action{
-                    font-weight: bold;
-                    color: #FF961A;
+                    &__action{
+                        font-weight: bold;
+                        color: #FF961A;
+                    }
+                }
+
+                &--disclaimer{
+                    font-size: 12px;
                 }
             }
-
+            
             &__back{
-                &--action{
-                    padding: 10px;
-                    border: solid 1px black;
-                    border-radius: 5px;
-                }
+                display: flex;
+                justify-content: center;
+                padding: 10px;
+                border: solid 1px black;
+                border-radius: 10px;
             }
+
         }
-        }
-        
     }
+
+    
 `
 
 const Signup = () => {
@@ -300,9 +332,117 @@ const Signup = () => {
 
             <Toaster position="bottom-center" reverseOrder={false}/>
             <SignupStyle>
-
                 {/* mobile version */}
-                <div className="signupMobile">
+                <div className="mobile">
+                    <div className="mobile__top">
+                        <h1>Bienvenue</h1>
+                        <h2>Faisons connaissance !</h2>
+                    </div>
+
+                    <form method='POST' onSubmit={handleSignUp} className='mobile__form'>
+                            <div className="mobile__form--fieds">
+                                <div className="mobile__form--box">
+                                    <label>Nom</label>
+                                    <input type="text" value={inputedUser.lastname || ""} placeholder='Nom' onChange={(e) => setInputedUser({ ...inputedUser, lastname:e.target.value })} className='mobile__form--input'/>
+                                </div>
+                                <div className="mobile__form--box">
+                                    <label>Prénom</label>
+                                    <input type="text" value={inputedUser.firstname || ""} placeholder='Prénom' onChange={(e) => setInputedUser({ ...inputedUser, firstname:e.target.value })} className='mobile__form--input'/>
+                                </div>
+                                <div className="mobile__form--box">
+                                    <label>Pseudo</label>
+                                    <input type="text" value={inputedUser.username || ""} placeholder='Pseudo' onChange={(e) => setInputedUser({ ...inputedUser, username:e.target.value })} className='mobile__form--input'/>
+                                </div>
+                                <div className="mobile__form--box">
+                                    <label>Adresse email</label>
+                                    <input type="email" value={inputedUser.email || ""} placeholder='Adresse email' onChange={(e) => setInputedUser({ ...inputedUser, email:e.target.value })} className='mobile__form--input'/>
+                                </div>
+                                <div className="mobile__form--box">
+                                    <label>Mot de passe</label>
+                                    <input type="password" value={inputedUser.password || ""} placeholder='Mot de passe' onChange={(e) => setInputedUser({ ...inputedUser, password:e.target.value })} className='mobile__form--input'/>
+                                </div>
+                            </div>
+
+                            <div className="mobile__form--disclaimer">
+                                <p>En continuant, j&apos;accepte les termes légaux, les conditions générales d&apos;utilisation et la politique de confidentialité de l&apos;application</p>
+                            </div>
+
+                            <div className="mobile__form--suggestion">
+                                <button type='submit' className='submitButton'>s'inscrire</button>
+                                <p>Vous avez déjà un compte ?</p>
+                                <Link href="/auth/signin"><a className='mobile__form--suggestion__action'>Connectez-vous ici !</a></Link>
+                            </div>
+
+                    </form>
+
+                    <div className="mobile__back">
+                        <Link href="/"><a className='mobile__back--action'>Retour à l&apos;accueil</a></Link>
+                    </div>
+                </div>
+
+                {/* desktop version */}
+
+                <div className="desktop">
+                    <div className="desktopLeft">
+                        <Image src='/logo/festivapp_logo.svg' width={120} height={120} alt='festivapp logo' className='desktopLeft--logo'/>
+                    </div>
+
+                    <div className="desktopRight">
+                        <div className="desktopRight__container">
+                            <div className="desktopRight__top">
+                                <h1>Bienvenue</h1>
+                                <h2>Faisons connaissance !</h2>
+                            </div>
+
+                            <form method='POST' onSubmit={handleSignUp} className='desktopRight__form'>
+                                    <div className="desktopRight__form--fieds">
+                                        <div className="desktopRight__form--box__username">
+                                            <div className="desktopRight__form--box">
+                                                <label>Nom</label>
+                                                <input type="text" value={inputedUser.lastname || ""} placeholder='Nom' onChange={(e) => setInputedUser({ ...inputedUser, lastname:e.target.value })} className='desktopRight__form--input__lastname'/>
+                                            </div>
+                                            <div className="desktopRight__form--box">
+                                                <label>Prénom</label>
+                                                <input type="text" value={inputedUser.firstname || ""} placeholder='Prénom' onChange={(e) => setInputedUser({ ...inputedUser, firstname:e.target.value })} className='desktopRight__form--input__firstname'/>
+                                            </div>
+                                        </div>
+
+                                        <div className="desktopRight__form--box">
+                                            <label>Pseudo</label>
+                                            <input type="text" value={inputedUser.username || ""} placeholder='Pseudo' onChange={(e) => setInputedUser({ ...inputedUser, username:e.target.value })} className='desktopRight__form--input'/>
+                                        </div>
+                                        <div className="desktopRight__form--box">
+                                            <label>Adresse email</label>
+                                            <input type="email" value={inputedUser.email || ""} placeholder='Adresse email' onChange={(e) => setInputedUser({ ...inputedUser, email:e.target.value })} className='desktopRight__form--input'/>
+                                        </div>
+                                        <div className="desktopRight__form--box">
+                                            <label>Mot de passe</label>
+                                            <input type="password" value={inputedUser.password || ""} placeholder='Mot de passe' onChange={(e) => setInputedUser({ ...inputedUser, password:e.target.value })} className='desktopRight__form--input'/>
+                                        </div>
+                                    </div>
+
+                                    <div className="desktopRight__form--disclaimer">
+                                        <p>En continuant, j&apos;accepte les termes légaux, les conditions générales d&apos;utilisation et la politique de confidentialité de l&apos;application</p>
+                                    </div>
+
+                                    <div className="desktopRight__form--suggestion">
+                                        <button type='submit' className='submitButton'>s'inscrire</button>
+                                        <p>Vous avez déjà un compte ?</p>
+                                        <Link href="/auth/signin"><a className='desktopRight__form--suggestion__action'>Connectez-vous ici !</a></Link>
+                                    </div>
+
+                            </form>
+
+                            <div className="desktopRight__back">
+                                <Link href="/"><a className='desktopRight__back--action'>Retour à l&apos;accueil</a></Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                {/* <div className="signupMobile">
                     <div className="signupMobileTop">
                         <h1 className='signupMobileTop__welcome'>Bienvenue <span>.</span></h1>
                         <h2 className='signupMobileTop__gettoknow'>Faisons connaissance !</h2>
@@ -346,7 +486,7 @@ const Signup = () => {
                 </div>
 
 
-                {/* desktop version */}
+                
                 <div className="signupDesktop">
                     <div className="signupDesktopLeft">
                         <Image src='/logo/festivapp_logo.svg' width={120} height={120} alt='festivapp logo' className='signupDesktopLeft__logo'/>
@@ -356,7 +496,7 @@ const Signup = () => {
                             {/* <div className="signupDesktopRight__top">
                                 <h1 className='signupDesktopRight__top--welcome'>Bienvenue <span>.</span></h1>
                                 <h2 className='signupDesktopRight__top--gettoknow'>Faisons connaissance !</h2>
-                            </div> */}
+                            </div> 
                             <div className="signupDesktopRight__bottom">
                                 <form onSubmit={handleSignUp} className='signupDesktopRight__form'>
                                     <div className="signupDesktopRight__form--fullname">
@@ -395,7 +535,7 @@ const Signup = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </SignupStyle>
         </>
 
@@ -403,29 +543,224 @@ const Signup = () => {
 }
 export default Signup
 
-
 // import Head from 'next/head'
 // import styled from 'styled-components'
 // import toast, { Toaster } from 'react-hot-toast'
-// // import styled from 'styled-components'
 // import { useRouter } from 'next/router'
 // import { useState } from 'react'
+// import Link from 'next/link'
+// import Image from 'next/image'
 
 // export const SignupStyle = styled.main`
 //     width: 100%;
-//     height: 100vh;
-//     display: flex;
+//     background: #ffffff;
+//     /* display: flex;
 //     justify-content: center;
 //     align-items: center;
+//     background: #ffffff; */
 
-//     .container{
+//     /* mobile version */
+//     .signupMobile{
+//         background: #ffffff;
+//         width: 100%;
+//         height: 100%;
 //         display: flex;
 //         flex-direction: column;
+//         align-items: center;
+//         justify-content: space-between;
+//         gap: 30px;
+//         padding: 40px 20px;
+
+//         @media only screen and (min-width: 768px) {
+//             width: 60%;
+//         }
+
+//         @media only screen and (min-width: 1024px) {
+//             display: none;
+//         }
+
+//         .signupMobileTop{
+//             width: 100%;
+//             font-family: 'Nexa-Bold';
+//             &__welcome{
+//                 font-size: 1.875rem;
+//             }
+//         }
+
+//         .signupMobileBottom{
+//             display: flex;
+//             flex-direction: column;
+//             align-items: center;
+//             justify-content: space-between;
+//             &__form{
+//                 display: flex;
+//                 flex-direction: column;
+//                 align-items: center;
+//                 justify-content: center;
+
+//                 &--box{
+//                     display: flex;
+//                     flex-direction: column;
+//                     align-items: flex-start;
+//                     margin-bottom: 22px;
+//                 }
+//                 &--input{
+//                     width: 280px;
+//                     border: none;
+//                     border-bottom: solid 2px black;
+//                     padding: 10px 0;
+
+//                     @media only screen and (min-width: 375px) {
+//                         width: 330px;
+//                     }
+
+//                     @media only screen and (min-width: 425px) {
+//                         width: 380px;
+//                     }
+
+//                 }
+//                 &--disclaimer{
+//                     font-size: 0.875rem;
+//                 }
+//             }
+//             &__suggestion{
+//                 display: flex;
+//                 flex-direction: column;
+//                 align-items: center;
+//                 justify-content: center;
+//                 margin-bottom: 20px;
+
+//                 &--action{
+//                     font-weight: bold;
+//                     color: #FF961A;
+//                 }
+//             }
+
+//             &__back{
+//                 &--action{
+//                     padding: 10px;
+//                     border: solid 1px black;
+//                     border-radius: 5px;
+//                 }
+//             }
+//         }
 //     }
 
-//     form{
-//         display: flex;
-//         flex-direction: column;
+//     /* desktop version */
+//     .signupDesktop{
+//         display: none;
+//         width: 100%;
+
+//         @media only screen and (min-width: 1024px) {
+//             display: flex;
+//             width: 100%;
+//             height: 100vh;
+//         }
+
+//         .signupDesktopLeft{
+//             width: 40%;
+//             background: url('/img/auth_bg.webp') no-repeat 0 0 / cover;
+//             display: flex;
+//             flex-direction: column;
+//             align-items: center;
+//             justify-content: flex-end;
+//                 }
+
+//         .signupDesktopRightContainer{
+//             display: flex;
+//             justify-content: center;
+//             align-items: center;
+//             width: 60%;
+//             height: 100vh;
+//             padding: 20px 160px;
+
+//             .signupDesktopRight{
+//                 width: 50%;
+//             background: #ffffff;
+//             padding: 40px;
+//             display: flex;
+//             flex-direction: column;
+//             align-items: center;
+//             justify-content: space-evenly;
+
+//             &__top{
+//                 font-family: 'Nexa-Bold';
+//                 width: 100%;
+//             }
+
+//             &__bottom{
+//                 display: flex;
+//                 flex-direction: column;
+//                 align-items: center;
+//                 justify-content: space-between;
+//             }
+
+//             &__form{
+//                 display: flex;
+//                 flex-direction: column;
+//                 align-items: start;
+//                 justify-content: flex-start;
+
+//                 &--fullname{
+//                     display: flex;
+//                     flex-direction: row;
+//                     align-items: center;
+//                     justify-content: space-between;
+//                     gap: 30px;
+
+//                 }
+
+//                 &--box{
+//                     display: flex;
+//                     flex-direction: column;
+//                     margin-bottom: 22px;
+//                 }
+
+//                 &--input{
+//                     width: 380px;
+//                     border: none;
+//                     border-bottom: solid 2px black;
+//                     padding: 10px 0;
+
+//                     &__name{
+//                         width: 100%;
+//                         border: none;
+//                         border-bottom: solid 2px black;
+//                         padding: 10px 0;
+//                     }
+//                 }
+//             }
+
+//             &__disclaimer{
+//                 display: flex;
+//                 flex-direction: column;
+//                 align-items: center;
+//                 justify-content: center;
+//             }
+
+//             &__suggestion{
+//                 display: flex;
+//                 flex-direction: row;
+//                 align-items: center;
+//                 margin-bottom: 40px;
+//                 gap: 10px;
+
+//                 &--action{
+//                     font-weight: bold;
+//                     color: #FF961A;
+//                 }
+//             }
+
+//             &__back{
+//                 &--action{
+//                     padding: 10px;
+//                     border: solid 1px black;
+//                     border-radius: 5px;
+//                 }
+//             }
+//         }
+//         }
+        
 //     }
 // `
 
@@ -508,17 +843,103 @@ export default Signup
 //                 <title>Festiv&apos;App | Inscription</title>
 //             </Head>
 
+//             <Toaster position="bottom-center" reverseOrder={false}/>
 //             <SignupStyle>
-//                 <div className="container">
-//                 <h1>Inscription</h1>
-//                 <form onSubmit={handleSignUp}>
-//                     <input type="text" value={inputedUser.username || ""} placeholder='Pseudo' onChange={(e) => setInputedUser({ ...inputedUser, username:e.target.value })}/>
-//                     <input type="text" value={inputedUser.lastname || ""} placeholder='Nom' onChange={(e) => setInputedUser({ ...inputedUser, lastname:e.target.value })}/>
-//                     <input type="text" value={inputedUser.firstname || ""} placeholder='Prénom' onChange={(e) => setInputedUser({ ...inputedUser, firstname:e.target.value })}/>
-//                     <input type="text" value={inputedUser.email || ""} placeholder='Adresse email' onChange={(e) => setInputedUser({ ...inputedUser, email:e.target.value })}/>
-//                     <input type="password" value={inputedUser.password || ""} placeholder='Mot de passe' onChange={(e) => setInputedUser({ ...inputedUser, password:e.target.value })}/>
-//                     <button type="submit">Submit</button>
-//                 </form>
+
+//                 {/* mobile version */}
+//                 <div className="signupMobile">
+//                     <div className="signupMobileTop">
+//                         <h1 className='signupMobileTop__welcome'>Bienvenue <span>.</span></h1>
+//                         <h2 className='signupMobileTop__gettoknow'>Faisons connaissance !</h2>
+//                     </div>
+
+//                     <div className="signupMobileBottom">
+//                         <form onSubmit={handleSignUp} className='signupMobileBottom__form'>
+//                             <div className="signupMobileBottom__form--box">
+//                                 <label>Pseudo</label>
+//                                 <input type="text" value={inputedUser.username || ""} placeholder='Pseudo' onChange={(e) => setInputedUser({ ...inputedUser, username:e.target.value })} className='signupMobileBottom__form--input'/>
+//                             </div>
+//                             <div className="signupMobileBottom__form--box">
+//                                 <label>Nom</label>
+//                                 <input type="text" value={inputedUser.lastname || ""} placeholder='Nom' onChange={(e) => setInputedUser({ ...inputedUser, lastname:e.target.value })} className='signupMobileBottom__form--input'/>
+//                             </div>
+//                             <div className="signupMobileBottom__form--box">
+//                                 <label>Prénom</label>
+//                                 <input type="text" value={inputedUser.firstname || ""} placeholder='Prénom' onChange={(e) => setInputedUser({ ...inputedUser, firstname:e.target.value })} className='signupMobileBottom__form--input'/>
+//                             </div>
+//                             <div className="signupMobileBottom__form--box">
+//                                 <label>Adresse email</label>
+//                                 <input type="text" value={inputedUser.email || ""} placeholder='Adresse email' onChange={(e) => setInputedUser({ ...inputedUser, email:e.target.value })} className='signupMobileBottom__form--input'/>
+//                             </div>
+//                             <div className="signupMobileBottom__form--box">
+//                                 <label>Mot de passe</label>
+//                                 <input type="password" value={inputedUser.password || ""} placeholder='Mot de passe' onChange={(e) => setInputedUser({ ...inputedUser, password:e.target.value })} className='signupMobileBottom__form--input'/>
+//                             </div>
+//                             <p className='signupMobileBottom__form--disclaimer'>En continuant, j&apos;accepte les termes légaux, les conditions générales d&apos;utilisation et la politique de confidentialité de l&apos;application </p>
+//                             <button type="submit" className='submitButton'>s&apos;inscrire</button>
+//                         </form>
+
+//                         <div className="signupMobileBottom__suggestion">
+//                             <p>Vous avez déjà un compte ? </p>
+//                             <Link href="/auth/signin"><a className='signupMobileBottom__suggestion--action'>Connectez-vous</a></Link>
+//                         </div>
+
+//                         <div className="signupMobileBottom__back">
+//                             <Link href="/"><a className='signupMobileBottom__back--action'>Retour à l&apos;accueil</a></Link>
+//                         </div>
+//                     </div>
+//                 </div>
+
+
+//                 {/* desktop version */}
+//                 <div className="signupDesktop">
+//                     <div className="signupDesktopLeft">
+//                         <Image src='/logo/festivapp_logo.svg' width={120} height={120} alt='festivapp logo' className='signupDesktopLeft__logo'/>
+//                     </div>
+//                     <div className="signupDesktopRightContainer">
+//                         <div className="signupDesktopRight">
+//                             {/* <div className="signupDesktopRight__top">
+//                                 <h1 className='signupDesktopRight__top--welcome'>Bienvenue <span>.</span></h1>
+//                                 <h2 className='signupDesktopRight__top--gettoknow'>Faisons connaissance !</h2>
+//                             </div> */}
+//                             <div className="signupDesktopRight__bottom">
+//                                 <form onSubmit={handleSignUp} className='signupDesktopRight__form'>
+//                                     <div className="signupDesktopRight__form--fullname">
+//                                         <div className="signupDesktopRight__form--box">
+//                                             <label>Nom</label>
+//                                             <input type="text" value={inputedUser.lastname || ""} placeholder='Nom' onChange={(e) => setInputedUser({ ...inputedUser, lastname:e.target.value })} className='signupDesktopRight__form--input__name'/>
+//                                         </div>
+//                                         <div className="signupDesktopRight__form--box">
+//                                             <label>Prénom</label>
+//                                             <input type="text" value={inputedUser.firstname || ""} placeholder='Prénom' onChange={(e) => setInputedUser({ ...inputedUser, firstname:e.target.value })} className='signupDesktopRight__form--input__name'/>
+//                                         </div>
+//                                     </div>
+//                                     <div className="signupDesktopRight__form--box">
+//                                         <label>Pseudo</label>
+//                                         <input type="text" value={inputedUser.username || ""} placeholder='Pseudo' onChange={(e) => setInputedUser({ ...inputedUser, username:e.target.value })} className='signupDesktopRight__form--input'/>
+//                                     </div>
+//                                     <div className="signupDesktopRight__form--box">
+//                                         <label>Adresse email</label>
+//                                         <input type="text" value={inputedUser.email || ""} placeholder='Adresse email' onChange={(e) => setInputedUser({ ...inputedUser, email:e.target.value })} className='signupDesktopRight__form--input'/>
+//                                     </div>
+//                                     <div className="signupDesktopRight__form--box">
+//                                         <label>Mot de passe</label>
+//                                         <input type="password" value={inputedUser.password || ""} placeholder='Mot de passe' onChange={(e) => setInputedUser({ ...inputedUser, password:e.target.value })} className='signupDesktopRight__form--input'/>
+//                                     </div>
+//                                     <p className='signupMobileBottom__form--disclaimer'>En continuant, j&apos;accepte les termes légaux, les conditions générales d&apos;utilisation et la politique de confidentialité de l&apos;application </p>
+//                                     <button type="submit" className='submitButton'>s&apos;inscrire</button>
+//                                 </form>
+//                                 <div className="signupDesktopRight__suggestion">
+//                                     <p>Vous avez déjà un compte ? </p>
+//                                     <Link href="/auth/signin"><a className='signupDesktopRight__suggestion--action'>Connectez-vous</a></Link>
+//                                 </div>
+
+//                                 <div className="signupDesktopRight__back">
+//                                     <Link href="/"><a className='signupDesktopRight__back--action'>Retour à l&apos;accueil</a></Link>
+//                                 </div>
+//                             </div>
+//                         </div>
+//                     </div>
 //                 </div>
 //             </SignupStyle>
 //         </>
