@@ -140,6 +140,7 @@ export default function Profile() {
                   },
               }
       );
+      router.push(`/profile/${user?.username}`)
     }else{
       toast.remove()
       toast('Erreur lors de la modification',
