@@ -70,6 +70,10 @@ export const SigninStyle = styled.main`
                 border: none;
                 border-bottom: 2px solid  #000000;
                 padding: 10px 10px;
+
+                &:focus{
+                    border-bottom: 2px solid  #FF961A;
+                }
             }
         }
 
@@ -165,6 +169,10 @@ export const SigninStyle = styled.main`
                     border: none;
                     border-bottom: 2px solid  #000000;
                     padding: 10px 10px;
+
+                    &:focus{
+                        border-bottom: 2px solid  #FF961A;
+                    }
                 }
 
                 &--forgotten{

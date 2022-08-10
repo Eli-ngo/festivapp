@@ -80,6 +80,10 @@ export const SignupStyle = styled.main`
                 border: none;
                 border-bottom: 2px solid  #000000;
                 padding: 10px 10px;
+
+                &:focus{
+                    border-bottom: 2px solid  #FF961A;
+                }
             }
 
             &--disclaimer p{
@@ -190,27 +194,10 @@ export const SignupStyle = styled.main`
                     border-bottom: 2px solid  #000000;
                     padding: 10px 10px;
 
-                    &__lastname{
-                        width: 100%;
-                        border: none;
-                        border-bottom: 2px solid  #000000;
-                        padding: 10px 10px;
-
-                        /* @media only screen and (min-width: 1440px){
-                            width: 220px;
-                        } */
+                    &:focus{
+                        border-bottom: 2px solid  #FF961A;
                     }
 
-                    &__firstname{
-                        width: 100%;
-                        border: none;
-                        border-bottom: 2px solid  #000000;
-                        padding: 10px 10px;
-                        
-                        /* @media only screen and (min-width: 1440px){
-                            width: 220px;
-                        } */
-                    }
                 }
 
                 &--forgotten{
@@ -399,11 +386,11 @@ const Signup = () => {
                                         <div className="desktopRight__form--box__username">
                                             <div className="desktopRight__form--box">
                                                 <label>Nom</label>
-                                                <input type="text" value={inputedUser.lastname || ""} placeholder='Nom' onChange={(e) => setInputedUser({ ...inputedUser, lastname:e.target.value })} className='desktopRight__form--input__lastname'/>
+                                                <input type="text" value={inputedUser.lastname || ""} placeholder='Nom' onChange={(e) => setInputedUser({ ...inputedUser, lastname:e.target.value })} className='desktopRight__form--input'/>
                                             </div>
                                             <div className="desktopRight__form--box">
                                                 <label>Prénom</label>
-                                                <input type="text" value={inputedUser.firstname || ""} placeholder='Prénom' onChange={(e) => setInputedUser({ ...inputedUser, firstname:e.target.value })} className='desktopRight__form--input__firstname'/>
+                                                <input type="text" value={inputedUser.firstname || ""} placeholder='Prénom' onChange={(e) => setInputedUser({ ...inputedUser, firstname:e.target.value })} className='desktopRight__form--input'/>
                                             </div>
                                         </div>
 
