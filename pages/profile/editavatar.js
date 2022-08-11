@@ -103,7 +103,6 @@ export default function Profile() {
 
   const handleChange = (e) => {
     setImage(e.target.files[0])
-    console.log(e.target.files[0])
     setPreviewImage(URL.createObjectURL(e.target.files[0]))
   }
 

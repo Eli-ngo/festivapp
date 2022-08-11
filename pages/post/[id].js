@@ -212,7 +212,6 @@ const Details = ({ postdetails }) => {
         body: JSON.stringify({ id }),
         })
         const json = await response.json()
-        console.log(json)
         toast.remove()
         toast('Votre post a été supprimé',
                     {

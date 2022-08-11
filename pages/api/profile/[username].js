@@ -10,7 +10,6 @@ export const config = {api:{
 
 export default async function handler (req, res) {
     const retrieveImage = await getImage(req) // on récupère l'image
-    console.log(retrieveImage)
     const user = await req.query.username // on récupère le nom d'utilisateur
     const foundUser = await prisma.user.findUnique({ // on récupère l'utilisateur
         where: {

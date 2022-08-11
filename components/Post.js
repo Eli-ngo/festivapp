@@ -251,7 +251,6 @@ const Post = ({ post, userUsername }) => {
         body: JSON.stringify({ id }),
         })
         const json = await response.json()
-        console.log(json)
         toast.remove()
         toast('Votre post a été supprimé',
                     {
@@ -265,8 +264,6 @@ const Post = ({ post, userUsername }) => {
                     );
         router.replace(router.asPath)
     }
-
-    console.log(post)
 
     return(
         <PostStyle>
