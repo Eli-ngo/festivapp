@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { PrismaClient } from '@prisma/client';
 import styled from 'styled-components';
 
+
 const HomeStyle = styled.div`
     width: 100%;
     padding: 30px;
