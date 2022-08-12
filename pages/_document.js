@@ -116,7 +116,7 @@ export default class MyDocument extends Document {
             __html: `
                 window.axeptioSettings = {
                     clientId: "62dc9644aee6fa56165dcfc5",
-                    cookiesVersion: "festivapp-fr",
+                    cookiesVersion: "https://festivapp/-fr",
                 };
                 
                 (function(d, s) {

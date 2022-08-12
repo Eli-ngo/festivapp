@@ -5,6 +5,7 @@ import * as gtag from '../lib/gtag'
 import { useRouter } from 'next/dist/client/router'
 import { useEffect } from 'react'
 import { CookiesProvider } from 'react-cookie'
+import '../styles/cookieconsent.css'
 
 function MyApp({ Component, pageProps }) { // pageProps est un objet qui contient les props de l'application
   const router = useRouter()
