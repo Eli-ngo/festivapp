@@ -115,14 +115,14 @@ export default class MyDocument extends Document {
         dangerouslySetInnerHTML={{
             __html: `
                 window.axeptioSettings = {
-                    clientId: "62dc9644aee6fa56165dcfc5",
-                    cookiesVersion: "https://festivapp/-fr",
+                  clientId: "62dc9644aee6fa56165dcfc5",
+                  cookiesVersion: "festivapp-fr",
                 };
                 
                 (function(d, s) {
-                    var t = d.getElementsByTagName(s)[0], e = d.createElement(s);
-                    e.async = true; e.src = "//static.axept.io/sdk.js";
-                    t.parentNode.insertBefore(e, t);
+                  var t = d.getElementsByTagName(s)[0], e = d.createElement(s);
+                  e.async = true; e.src = "//static.axept.io/sdk.js";
+                  t.parentNode.insertBefore(e, t);
                 })(document, "script");
             `,
         }}
